@@ -3,9 +3,7 @@
 {% load static %}
 <style>
     .background-container {
-        background-image: url('{% static "images/admin.jpg" %}');
-        background-repeat: no-repeat;
-        background-size: cover;
+        background-color: rgb(209, 194, 248);
         position: fixed;
         top: 0;
         left: 0;
@@ -17,10 +15,9 @@
     .overlay {
         position: fixed;
         top: 56px; /* Adjusted for navbar height */
-        left: 220px; /* Adjusted for navbar width */
-        width: calc(100% - 220px); /* Adjusted for navbar width */
+        left: 200px; /* Adjusted for navbar width */
+        width: calc(100% - 200px); /* Adjusted for navbar width */
         height: calc(100% - 56px); /* Adjusted for navbar height */
-        background-color: rgba(12, 9, 9, 0.6);
         display: flex;
         flex-direction: column;
         justify-content: flex-start;
@@ -33,22 +30,18 @@
         border-radius: 10px;
     }
     .nav-link:hover {
-        background-color: indigo;
+        background-color: blueviolet;
     }
     .time-card {
-        width: 700px;
+        width: 500px;
+        height: 200px;
         margin-bottom: 20px;
-        margin-top: 50px;
-        background-color: #fff;
+        margin-top: 120px;
+        margin-left: 10px;
+        background-color: rgb(209, 194, 248);
         border-radius: 15px;
-        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
         padding: 20px;
         text-align: center;
-        transition: transform 0.3s, box-shadow 0.3s;
-    }
-    .time-card:hover {
-        transform: scale(1.02);
-        box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
     }
     .time-content {
         display: flex;
@@ -64,29 +57,26 @@
     .time-details div {
         text-align: center;
     }
-   
-   
     .weather-icon {
         color: #007bff;
-        font-size:3rem;
+        font-size: 3rem;
     }
     .inspiration {
         font-size: 1.2rem;
-        color: #555;
+        color: #007bff;
         margin-top: 20px;
         font-style: italic;
     }
-    
     .card-deck {
         display: flex;
         flex-wrap: wrap;
         justify-content: center;
-        gap: 20px;
+       padding-left: 35px;
     }
     .card {
-        width: 300px;
+        width: 230px;
         height: 200px;
-        margin: 15px;
+       
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -94,13 +84,14 @@
         border-radius: 15px;
         transition: transform 0.3s, box-shadow 0.3s;
         text-align: center;
+        padding: 10px;
     }
     .card:hover {
         transform: scale(1.05);
         box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
     }
     .card-icon {
-        font-size: 60px;
+        font-size: 50px;
         margin-bottom: 10px;
         transition: color 0.3s;
     }
@@ -113,6 +104,12 @@
     .bg-red {
         background-color: #dc3545;
     }
+    .bg-blue {
+        background-color: #007bff;
+    }
+    .bg-purple {
+        background-color: #6f42c1;
+    }
     .bg-orange .card-icon {
         color: #FFD700;
     }
@@ -122,70 +119,80 @@
     .bg-red .card-icon {
         color: #FF6347;
     }
-    
-   
+    .bg-blue .card-icon {
+        color: #1E90FF;
+    }
+    .bg-purple .card-icon {
+        color: #DDA0DD;
+    }
+    .dashboard-section {
+        background-color: rgb(166, 244, 134);
+        border-radius: 15px;
+        padding: 20px;
+        margin-top: 47px;
+        margin-bottom: 20px;
+        margin-left: 20px;
+        width: 50%;
+        color: white;
+        max-width: 1000px;
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+    }
+    .dashboard-section2 {
+        padding: 20px;
+        margin-bottom: 20px;
+        width: 40%;
+    }
+    .dashboard-section3{
+        margin-top:20px;
+        padding: 20px;
+        margin-bottom: 20px;
+        width: auto;
+        
+    }
+    .dashboard-section h2 {
+        font-size: 1.5rem;
+        margin-bottom: 15px;
+    }
+    .chart-container {
+        width: 100%;
+        height: 300px;
+    }
+    .table {
+        margin-top: 20px;
+        width: 100%;
+        color: #fff;
+        background-color: #343a40;
+        border-radius: 10px;
+        overflow: hidden;
+    }
+    .table th, .table td {
+        padding: 12px 15px;
+        text-align: center;
+    }
+    .table thead th {
+        background-color: #007bff;
+    }
+    .table tbody tr:nth-child(even) {
+        background-color: #6c757d;
+    }
+    .table tbody tr:nth-child(odd) {
+        background-color: #495057;
+    }
+    .table tbody tr:hover {
+        background-color: #868e96;
+    }
     @media (max-width: 576px) {
         .overlay {
-            position: fixed;
-            top: 56px; 
-            left:auto;/* Adjusted for navbar height */
-            width:100%; /* Adjusted for navbar width */
-            
-            background-color: rgba(12, 9, 9, 0.6);
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-start;
-            align-items: center;
-            overflow-y: auto;
-            padding: 20px;
-            box-sizing: border-box;
+            top: 56px;
+            left: 0;
+            width: 100%;
         }
-        .time-card{
-            max-width:250px;
+        .time-card {
+            width: 90%;
         }
         .card {
-            max-width: 150px;
-            justify-content: center;
-            align-items: center;
-            margin-top: 10px;
-            border-radius: 10px;
-           
-        }
-        .card-deck {
-            margin-top: 20px;
-        }
-        
-        .weather-icon {
-            color: #007bff;
-            font-size:2rem;
-        }
-        
-        .card-title {
-            font-size: 0.9rem;
-            color: #ffffff;
-        }
-        .card-text {
-            font-size: 0.7rem;
-            color: #ffffff;
-        }
-        .time-card .card-title {
-            color: #007bff;
-            font-weight: bold;
-            font-size: 0.9rem;
-        }
-        .time-card .card-text {
-            font-size: 0.7rem;
-            color: #17a2b8;
-        }
-        .time-card .inspiration {
-            font-size: 0.8rem;
-            color: #6c757d;
-            font-style: italic;
-        }
-        .time-card .card-text span {
-            color: #28a745;
-            font-weight: bold;
-            font-size: 0.8rem;
+            width: 200px;
+            height: 150px;
         }
     }
     .time-card .card-title {
@@ -205,93 +212,238 @@
         font-weight: bold;
     }
     .card-title {
-        font-size: 1.4rem;
+        font-size: 1rem;
         color: #ffffff;
     }
     .card-text {
-        font-size: 1.3rem;
+        font-size: 0.9rem;
         color: #ffffff;
     }
+    .flex-container {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        max-width: 1000px;
+    }
+    .dashboard-section2{
+        margin-left:30px;
+    }
+    .dashboard-section2,
+    .dashboard-section4 {
+        flex: 1;
+        padding: 30px;
+        box-sizing: border-box;
+       
+    }
+    .dashboard-section4 {
+        margin-left: 30px;
+        padding-right:20px;
+        
+    }
+    .card-deck.policy-cards {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        margin-top: 90px;
+        width:600px;
+    }
+    .policy-card {
+        width: 200px;
+        flex: 1 1 calc(50% - 20px);
+       
+    }
 </style>
+
 <div class="background-container img-fluid"></div>
 <div class="overlay">
-    <div class="time-card text-center">
-        <div class="time-content">
-            <p class="inspiration" id="inspiration"></p>
-            <i class="fas fa-sun weather-icon"></i>
-            <p class="card-title">Date & Time</p>
-            <p class="card-text">
-                <span id="date"></span>  | <span id="time"></span> 
-            </p>
-        </div>
-    </div>
-    <div class="card-deck">
-        <div class="card bg-orange text-white text-center">
-            <div class="card-body">
-                <i class="fas fa-user card-icon"></i>
-                <h5 class="card-title">Total Agents</h5>
-                <p class="card-text">10</p>
+    <div class="row">
+        <div class="time-card text-center">
+            <div class="time-content">
+                <p class="inspiration" id="inspiration"></p>
+                <i class="fas fa-sun weather-icon"></i>
+                <p class="card-title">Date & Time</p>
+                <p class="card-text">
+                    <span id="date"></span> | <span id="time"></span>
+                </p>
             </div>
         </div>
-        <div class="card bg-green text-white text-center">
-            <div class="card-body">
-                <i class="fas fa-users card-icon"></i>
-                <h5 class="card-title">Total Clients</h5>
-                <p class="card-text">32</p>
+        <div class="dashboard-section mr-auto">
+            <h2>Business Overview</h2>
+            <div class="chart-container">
+                <canvas id="businessOverviewChart"></canvas>
             </div>
         </div>
-        <div class="card bg-red text-white text-center">
-            <div class="card-body">
-                <i class="fas fa-file-alt card-icon"></i>
-                <h5 class="card-title">Total Policies</h5>
-                <p class="card-text">50</p>
+        <div class="flex-container">
+            <div class="dashboard-section2">
+                <h2 class="text-center">Policy Volume Comparison</h2>
+                <div class="chart-container">
+                    <canvas id="policyVolumeChart"></canvas>
+                </div>
+            </div>
+            <div class="dashboard-section4 ">
+                <h2 class="text-center">Insurance Types</h2>
+                <div class="card-deck policy-cards">
+                    <div class="card bg-purple policy-card">
+                        <div class="card-icon"><i class="fas fa-car"></i></div>
+                        <div class="card-title">Auto Insurance</div>
+                        <div class="card-text">320 policies</div>
+                    </div>
+                    <div class="card bg-green policy-card">
+                        <div class="card-icon"><i class="fas fa-home"></i></div>
+                        <div class="card-title">Home Insurance</div>
+                        <div class="card-text">210 policies</div>
+                    </div>
+                    <div class="card bg-red policy-card">
+                        <div class="card-icon"><i class="fas fa-briefcase-medical"></i></div>
+                        <div class="card-title">Health Insurance</div>
+                        <div class="card-text">450 policies</div>
+                    </div>
+                    <div class="card bg-orange policy-card">
+                        <div class="card-icon"><i class="fas fa-plane"></i></div>
+                        <div class="card-title">Travel Insurance</div>
+                        <div class="card-text">120 policies</div>
+                    </div>
+                </div>
             </div>
         </div>
+        <div class="card-deck">
+            <div class="card bg-orange">
+                <div class="card-icon"><i class="fas fa-users"></i></div>
+                <div class="card-title">Total Customers</div>
+                <div class="card-text">1105</div>
+            </div>
+            <div class="card bg-green">
+                <div class="card-icon"><i class="fas fa-clock"></i></div>
+                <div class="card-title">Active</div>
+                <div class="card-text">68</div>
+            </div>
+            <div class="card bg-red">
+                <div class="card-icon"><i class="fas fa-ban"></i></div>
+                <div class="card-title">Suspended</div>
+                <div class="card-text">28</div>
+            </div>
+            <div class="card bg-blue">
+                <div class="card-icon"><i class="fas fa-sync"></i></div>
+                <div class="card-title">Pending Renewal</div>
+                <div class="card-text">85</div>
+            </div>
+        </div>
+        <div class="dashboard-section3">
+            <h2>Customer Satisfaction Level</h2>
+            <table class="table table-striped table-responsive">
+                <thead>
+                    <tr>
+                        <th>Policy Number</th>
+                        <th>Customer Name</th>
+                        <th>Mobile</th>
+                        <th>Due Date</th>
+                        <th>Premium</th>
+                        <th>Satisfaction Rating</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>FG456547</td>
+                        <td>Haris Johnston</td>
+                        <td>XXXXXXXXXX</td>
+                        <td>XXXXXXXXXX</td>
+                        <td>15,451</td>
+                        <td>4.5</td>
+                    </tr>
+                    <tr>
+                        <td>FG456547</td>
+                        <td>Blake West</td>
+                        <td>XXXXXXXXXX</td>
+                        <td>XXXXXXXXXX</td>
+                        <td>7,158</td>
+                        <td>4.0</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                // Display date and time
+                var dateElement = document.getElementById('date');
+                var timeElement = document.getElementById('time');
+                var inspirationElement = document.getElementById('inspiration');
+                var today = new Date();
+
+                var options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+                dateElement.textContent = today.toLocaleDateString('en-US', options);
+
+                function updateTime() {
+                    var now = new Date();
+                    timeElement.textContent = now.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' });
+                }
+
+                updateTime();
+                setInterval(updateTime, 60000);
+
+                var messages = [
+                    "Every day is a fresh start.",
+                    "Believe in yourself and all that you are.",
+                    "Your only limit is your mind.",
+                    "Push yourself, because no one else is going to do it for you.",
+                    "Success is not for the lazy.",
+                    "Believe you can and you're halfway there."
+                ];
+
+                var randomMessage = messages[Math.floor(Math.random() * messages.length)];
+                inspirationElement.textContent = randomMessage;
+
+                // Business Overview Chart
+                var ctx1 = document.getElementById('businessOverviewChart').getContext('2d');
+                var businessOverviewChart = new Chart(ctx1, {
+                    type: 'bar',
+                    data: {
+                        labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+                        datasets: [{
+                            label: 'Amount',
+                            data: [1200, 1900, 3000, 5000, 2300, 3200, 4000, 3800, 2900, 4400, 5200, 6100], // example data
+                            backgroundColor: 'rgb(22, 56, 8)',
+                            borderColor: 'rgba(75, 192, 192, 1)',
+                            borderWidth: 1
+                        }]
+                    },
+                    options: {
+                        scales: {
+                            y: {
+                                beginAtZero: true
+                            }
+                        }
+                    }
+                });
+
+                // Policy Volume Chart
+                var ctx2 = document.getElementById('policyVolumeChart').getContext('2d');
+                var policyVolumeChart = new Chart(ctx2, {
+                    type: 'doughnut',
+                    data: {
+                        labels: ['Active', 'Inactive', 'Pending'],
+                        datasets: [{
+                            label: 'Policy Volume',
+                            data: [855, 284, 19],
+                            backgroundColor: [
+                                'rgba(75, 192, 192, 2)',
+                                'rgba(255, 99, 132, 2)',
+                                'rgba(255, 206, 86, 2)'
+                            ],
+                            borderColor: [
+                                'rgba(75, 192, 192, 1)',
+                                'rgba(255, 99, 132, 1)',
+                                'rgba(255, 206, 86, 1)'
+                            ],
+                            borderWidth: 1
+                        }]
+                    }
+                });
+            });
+        </script>
     </div>
 </div>
-
-<script>
-    document.addEventListener('DOMContentLoaded', function() {
-        // Display date and time
-        var dateElement = document.getElementById('date');
-        var timeElement = document.getElementById('time');
-        var inspirationElement = document.getElementById('inspiration');
-        var today = new Date();
-        
-        var options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
-        dateElement.textContent = today.toLocaleDateString('en-US', options);
-        
-        function updateTime() {
-            var now = new Date();
-            timeElement.textContent = now.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' });
-        }
-
-        updateTime();
-        setInterval(updateTime, 60000); 
-
-        
-        var messages = [
-            "Every day is a fresh start.",
-            "Believe in yourself and all that you are.",
-            "Your only limit is your mind.",
-            "Push yourself, because no one else is going to do it for you.",
-            "Success is not for the lazy.",
-            "Believe you can and you're halfway there."
-        ];
-
-       
-        var randomMessage = messages[Math.floor(Math.random() * messages.length)];
-        inspirationElement.textContent = randomMessage;
-    });
-</script>
 {% endblock %}
-
-
-
-
-
-
-
 
 
 
