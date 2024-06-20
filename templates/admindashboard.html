@@ -61,17 +61,13 @@
         color: #007bff;
         font-size: 3rem;
     }
-    .inspiration {
-        font-size: 1.2rem;
-        color: #007bff;
-        margin-top: 20px;
-        font-style: italic;
-    }
+    
     .card-deck {
         display: flex;
         flex-wrap: wrap;
         justify-content: center;
        padding-left: 35px;
+       margin-bottom:10px;
     }
     .card {
         width: 230px;
@@ -142,35 +138,43 @@
         margin-bottom: 20px;
         width: 40%;
     }
-    .dashboard-section3{
-        margin-top:20px;
-        padding: 20px;
-        margin-bottom: 20px;
-        width: auto;
-        
-    }
+    
     .dashboard-section h2 {
         font-size: 1.5rem;
         margin-bottom: 15px;
+    }
+    .dashboard-section3{
+       
+        margin-top: 20px;
     }
     .chart-container {
         width: 100%;
         height: 300px;
     }
+    .table-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        
+    }
     .table {
         margin-top: 20px;
-        width: 100%;
+        margin-left: 30px;
+        width: auto;
+        max-width: 1000px;
         color: #fff;
         background-color: #343a40;
         border-radius: 10px;
-        overflow: hidden;
+         overflow-y: auto;
+        overflow-x: auto;
     }
     .table th, .table td {
         padding: 12px 15px;
         text-align: center;
     }
     .table thead th {
-        background-color: #007bff;
+        background-color:rgb(30, 26, 124);
     }
     .table tbody tr:nth-child(even) {
         background-color: #6c757d;
@@ -179,7 +183,13 @@
         background-color: #495057;
     }
     .table tbody tr:hover {
-        background-color: #868e96;
+        background-color: rgb(80, 76, 200);
+    }
+    .table img {
+        border-radius: 50%;
+        width: 40px;
+        height: 40px;
+        object-fit: cover;
     }
     @media (max-width: 576px) {
         .overlay {
@@ -204,8 +214,10 @@
         color: #17a2b8;
     }
     .time-card .inspiration {
-        color: #6c757d;
+        color: indigo;
         font-style: italic;
+        font-weight: bold;
+        font-size: 1.2rem;
     }
     .time-card .card-text span {
         color: #28a745;
@@ -244,11 +256,12 @@
         display: flex;
         flex-wrap: wrap;
         justify-content: space-between;
-        margin-top: 90px;
-        width:600px;
+        margin-top: 100px;
+        width:650px;
+       
     }
-    .policy-card {
-        width: 200px;
+    .policy-cards {
+        
         flex: 1 1 calc(50% - 20px);
        
     }
@@ -259,7 +272,7 @@
     <div class="row">
         <div class="time-card text-center">
             <div class="time-content">
-                <p class="inspiration" id="inspiration"></p>
+                <p class="inspiration">Welcome Admin</p>
                 <i class="fas fa-sun weather-icon"></i>
                 <p class="card-title">Date & Time</p>
                 <p class="card-text">
@@ -328,16 +341,18 @@
                 <div class="card-text">85</div>
             </div>
         </div>
-        <div class="dashboard-section3">
-            <h2>Customer Satisfaction Level</h2>
-            <table class="table table-striped table-responsive">
+        <div class="dashboard-section3 row justify-content-center">
+            <h2 class="">Customer Satisfaction Level</h2>
+            <div class="table-container">
+             <table class="table  table-responsive">
                 <thead>
                     <tr>
                         <th>Policy Number</th>
                         <th>Customer Name</th>
+                        <th>Photo</th>
                         <th>Mobile</th>
-                        <th>Due Date</th>
-                        <th>Premium</th>
+                       
+                       
                         <th>Satisfaction Rating</th>
                     </tr>
                 </thead>
@@ -345,29 +360,31 @@
                     <tr>
                         <td>FG456547</td>
                         <td>Haris Johnston</td>
-                        <td>XXXXXXXXXX</td>
-                        <td>XXXXXXXXXX</td>
-                        <td>15,451</td>
+                        <td><img src="{% static 'images/nibi.jpeg' %}" alt="Client Photo"></td>
+                        <td>9246221478</td>
+                       
                         <td>4.5</td>
                     </tr>
                     <tr>
                         <td>FG456547</td>
                         <td>Blake West</td>
-                        <td>XXXXXXXXXX</td>
-                        <td>XXXXXXXXXX</td>
-                        <td>7,158</td>
+                        <td><img src="{% static 'images/profile2.jpeg' %}" alt="Client Photo"></td>
+                        <td>7548965213</td>
+                        
                         <td>4.0</td>
                     </tr>
                 </tbody>
             </table>
         </div>
+    </div>
+    </div>
         <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
         <script>
             document.addEventListener('DOMContentLoaded', function() {
                 // Display date and time
                 var dateElement = document.getElementById('date');
                 var timeElement = document.getElementById('time');
-                var inspirationElement = document.getElementById('inspiration');
+                
                 var today = new Date();
 
                 var options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
@@ -381,18 +398,9 @@
                 updateTime();
                 setInterval(updateTime, 60000);
 
-                var messages = [
-                    "Every day is a fresh start.",
-                    "Believe in yourself and all that you are.",
-                    "Your only limit is your mind.",
-                    "Push yourself, because no one else is going to do it for you.",
-                    "Success is not for the lazy.",
-                    "Believe you can and you're halfway there."
-                ];
+               
 
-                var randomMessage = messages[Math.floor(Math.random() * messages.length)];
-                inspirationElement.textContent = randomMessage;
-
+               
                 // Business Overview Chart
                 var ctx1 = document.getElementById('businessOverviewChart').getContext('2d');
                 var businessOverviewChart = new Chart(ctx1, {
@@ -444,6 +452,7 @@
     </div>
 </div>
 {% endblock %}
+
 
 
 

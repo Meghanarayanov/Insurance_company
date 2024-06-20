@@ -12,10 +12,6 @@
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-
     <style>
        .navbar-brand-wrapper {
             display: flex;
@@ -32,7 +28,7 @@
         }
         .navbar {
             min-height: 80px; /* Adjust the navbar height if needed */
-            background-color:blueviolet;
+            background-color:rgb(7, 6, 46);
         }
     
         .vertical-nav .nav-link {
@@ -59,7 +55,7 @@
             overflow: hidden;
             -ms-overflow-style: none; 
             scrollbar-width: none; 
-            background-color: blueviolet; 
+            background-color: rgb(7, 6, 46); 
             border-radius:20px;
         }
         @media (min-width: 992px) {
@@ -67,9 +63,9 @@
                 position: fixed;
                 top: 56px;
                 left: 0;
-                width: 220px;
+                width: 200px;
                 height: 100%;
-                background-color: blueviolet;
+                background-color:rgb(7, 6, 46);
                 overflow-y: auto;
                 padding-top: 30px;
             }
@@ -134,7 +130,7 @@
                     <a class="nav-link text-white" href="{% url 'agent_profile' %}"><i class="fas fa-user-tie"></i>Profile</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link text-white" href="{% url 'cutomer_informations' %}"><i class="fas fa-eye"></i>Customer Information Form</a>
+                    <a class="nav-link text-white" href="{% url 'cutomer_informations' %}"><i class="fas fa-eye"></i>Customer Form</a>
                 </li>
                 
             </ul>
