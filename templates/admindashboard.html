@@ -2,8 +2,15 @@
 {% block content %}
 {% load static %}
 <style>
+    :root {
+        --primary-color: rgb(169, 166, 248);
+        --secondary-color: rgb(209, 194, 248);
+        --text-color: white;
+        --background-color: rgb(166, 244, 134);
+    }
+
     .background-container {
-        background-color: rgb(209, 194, 248);
+        background-color: var(--primary-color);
         position: fixed;
         top: 0;
         left: 0;
@@ -12,12 +19,13 @@
         filter: blur(0.1px);
         z-index: -1;
     }
+
     .overlay {
         position: fixed;
-        top: 56px; /* Adjusted for navbar height */
-        left: 200px; /* Adjusted for navbar width */
-        width: calc(100% - 200px); /* Adjusted for navbar width */
-        height: calc(100% - 56px); /* Adjusted for navbar height */
+        top: 56px;
+        left: 200px;
+        width: calc(100% - 200px);
+        height: calc(100% - 56px);
         display: flex;
         flex-direction: column;
         justify-content: flex-start;
@@ -26,53 +34,48 @@
         padding: 20px;
         box-sizing: border-box;
     }
+
     .nav-link {
         border-radius: 10px;
     }
+
     .nav-link:hover {
         background-color: blueviolet;
     }
+
     .time-card {
-        width: 500px;
+        width: 100%;
+        max-width: 500px;
         height: 200px;
-        margin-bottom: 20px;
-        margin-top: 120px;
-        margin-left: 10px;
-        background-color: rgb(209, 194, 248);
+        margin: 20px 10px;
+        background-color:var(--primary-color); ;
         border-radius: 15px;
         padding: 20px;
         text-align: center;
     }
+
     .time-content {
         display: flex;
         flex-direction: column;
         align-items: center;
     }
-    .time-details {
-        display: flex;
-        justify-content: space-around;
-        width: 100%;
-        margin-top: 10px;
-    }
-    .time-details div {
-        text-align: center;
-    }
+
     .weather-icon {
         color: #007bff;
         font-size: 3rem;
     }
-    
+
     .card-deck {
         display: flex;
         flex-wrap: wrap;
         justify-content: center;
-       padding-left: 35px;
-       margin-bottom:10px;
+        padding: 10px;
+        margin-bottom: 10px;
     }
+
     .card {
         width: 230px;
         height: 200px;
-       
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -82,269 +85,337 @@
         text-align: center;
         padding: 10px;
     }
+
     .card:hover {
         transform: scale(1.05);
         box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
     }
+
     .card-icon {
         font-size: 50px;
         margin-bottom: 10px;
         transition: color 0.3s;
     }
+
     .bg-orange {
         background-color: #FFA500;
     }
+
     .bg-green {
         background-color: #28a745;
     }
+
     .bg-red {
         background-color: #dc3545;
     }
+
     .bg-blue {
         background-color: #007bff;
     }
+
     .bg-purple {
         background-color: #6f42c1;
     }
-    .bg-orange .card-icon {
-        color: #FFD700;
+
+    .card-title,
+    .card-text {
+        color: var(--text-color);
     }
-    .bg-green .card-icon {
-        color: #32CD32;
-    }
-    .bg-red .card-icon {
-        color: #FF6347;
-    }
-    .bg-blue .card-icon {
-        color: #1E90FF;
-    }
-    .bg-purple .card-icon {
-        color: #DDA0DD;
-    }
+
     .dashboard-section {
-        background-color: rgb(166, 244, 134);
+        background-color: rgb(218, 217, 242);
         border-radius: 15px;
         padding: 20px;
-        margin-top: 47px;
-        margin-bottom: 20px;
-        margin-left: 20px;
-        width: 50%;
-        color: white;
+        margin: 20px 10px;
+        width: 100%;
         max-width: 1000px;
+        color:rgb(5, 3, 70) ;
         box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
     }
-    .dashboard-section2 {
+    .dashboard-section5 {
+        background-color:rgb(226, 234, 244);
+        border-radius: 15px;
         padding: 20px;
-        margin-bottom: 20px;
-        width: 40%;
+        margin: 20px 10px;
+        width: 100%;
+        max-width: 1000px;
+        color: rgb(5, 3, 70);
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
     }
-    
-    .dashboard-section h2 {
-        font-size: 1.5rem;
-        margin-bottom: 15px;
+
+    .dashboard-section2,
+    .dashboard-section4 {
+        flex: 1;
+        padding: 30px;
+        box-sizing: border-box;
     }
-    .dashboard-section3{
-       
-        margin-top: 20px;
+
+    .dashboard-section4 {
+        margin-left: 30px;
+        padding-right: 20px;
     }
+
     .chart-container {
         width: 100%;
         height: 300px;
     }
+
     .table-container {
         display: flex;
         justify-content: center;
         align-items: center;
         width: 100%;
-        
     }
+
     .table {
-        margin-top: 20px;
-        margin-left: 30px;
+        margin: 20px 30px;
         width: auto;
         max-width: 1000px;
-        color: #fff;
+        color: var(--text-color);
         background-color: #343a40;
         border-radius: 10px;
-         overflow-y: auto;
-        overflow-x: auto;
+        overflow: auto;
     }
-    .table th, .table td {
+
+    .table th,
+    .table td {
         padding: 12px 15px;
         text-align: center;
     }
+
     .table thead th {
-        background-color:rgb(30, 26, 124);
+        background-color: rgb(30, 26, 124);
     }
+
     .table tbody tr:nth-child(even) {
         background-color: #6c757d;
     }
+
     .table tbody tr:nth-child(odd) {
         background-color: #495057;
     }
+
     .table tbody tr:hover {
         background-color: rgb(80, 76, 200);
     }
+
     .table img {
         border-radius: 50%;
         width: 40px;
         height: 40px;
         object-fit: cover;
     }
-    @media (max-width: 576px) {
-        .overlay {
-            top: 56px;
-            left: 0;
-            width: 100%;
-        }
-        .time-card {
-            width: 90%;
-        }
-        .card {
-            width: 200px;
-            height: 150px;
-        }
-    }
-    .time-card .card-title {
-        color: #007bff;
-        font-weight: bold;
-    }
-    .time-card .card-text {
-        font-size: 1.2rem;
-        color: #17a2b8;
-    }
-    .time-card .inspiration {
+
+    .inspiration {
         color: indigo;
         font-style: italic;
         font-weight: bold;
         font-size: 1.2rem;
     }
-    .time-card .card-text span {
-        color: #28a745;
-        font-weight: bold;
-    }
-    .card-title {
-        font-size: 1rem;
-        color: #ffffff;
-    }
-    .card-text {
-        font-size: 0.9rem;
-        color: #ffffff;
-    }
+
     .flex-container {
         display: flex;
         justify-content: space-between;
         width: 100%;
         max-width: 1000px;
     }
-    .dashboard-section2{
-        margin-left:30px;
-    }
-    .dashboard-section2,
-    .dashboard-section4 {
-        flex: 1;
-        padding: 30px;
-        box-sizing: border-box;
-       
-    }
-    .dashboard-section4 {
-        margin-left: 30px;
-        padding-right:20px;
-        
-    }
-    .card-deck.policy-cards {
+
+    .policy-cards {
         display: flex;
         flex-wrap: wrap;
         justify-content: space-between;
-        margin-top: 100px;
-        width:650px;
-       
+        margin: 20px 0;
     }
-    .policy-cards {
-        
+
+    .policy-card {
         flex: 1 1 calc(50% - 20px);
-       
+        margin: 10px;
+    }
+
+    @media (max-width: 992px) {
+        .overlay {
+            left: 0;
+            width: 100%;
+            padding: 10px;
+        }
+
+        .dashboard-section,
+        .dashboard-section5,
+        .dashboard-section2,
+        .dashboard-section4 {
+            width: 100%;
+            margin: 0;
+            padding: 10px;
+        }
+
+        .dashboard-section4 {
+            margin-top: 20px;
+        }
+
+        .policy-cards {
+            justify-content: center;
+        }
+
+        .policy-card,
+        .card {
+            width: 100%;
+            margin-bottom: 20px;
+        }
+    }
+
+    @media (max-width: 768px) {
+        .card-title {
+            font-size: 0.9rem;
+        }
+
+        .card-text {
+            font-size: 0.7rem;
+        }
+
+        .time-card {
+            width: 100%;
+            margin: 20px 0;
+        }
+
+        .time-card .card-title {
+            font-size: 0.7rem;
+        }
+
+        .time-card .card-text {
+            font-size: 0.5rem;
+        }
+
+        .time-card .inspiration {
+            font-size: 0.8rem;
+        }
+
+        .time-card .card-text span {
+            font-size: 0.8rem;
+        }
+
+        .chart-container {
+            width: 100%;
+            height: auto;
+        }
+    }
+
+    @media (max-width: 576px) {
+        .card {
+            max-width: 150px;
+            justify-content: center;
+            align-items: center;
+            margin-top: 10px;
+            border-radius: 10px;
+        }
+
+        .card-title {
+            font-size: 0.9rem;
+        }
+
+        .card-text {
+            font-size: 0.7rem;
+        }
+
+        .time-card {
+            width: 200px;
+        }
+
+        .time-card .card-title {
+            font-size: 0.7rem;
+        }
+
+        .time-card .card-text {
+            font-size: 0.5rem;
+        }
+
+        .time-card .inspiration {
+            font-size: 0.8rem;
+        }
+
+        .time-card .card-text span {
+            font-size: 0.8rem;
+        }
+
+        .chart-container {
+            width: 100%;
+            height: auto;
+        }
     }
 </style>
 
 <div class="background-container img-fluid"></div>
 <div class="overlay">
-    <div class="row">
-        <div class="time-card text-center">
-            <div class="time-content">
-                <p class="inspiration">Welcome Admin</p>
-                <i class="fas fa-sun weather-icon"></i>
-                <p class="card-title">Date & Time</p>
-                <p class="card-text">
-                    <span id="date"></span> | <span id="time"></span>
-                </p>
-            </div>
+    <div class="time-card text-center">
+        <div class="time-content">
+            <p class="inspiration">Welcome Admin</p>
+            <i class="fas fa-sun weather-icon"></i>
+            <p class="card-title">Date & Time</p>
+            <p class="card-text">
+                <span id="date"></span> | <span id="time"></span>
+            </p>
         </div>
-        <div class="dashboard-section mr-auto">
-            <h2>Business Overview</h2>
+    </div>
+    <div class="dashboard-section">
+        <h2>Business Overview</h2>
+        <div class="chart-container">
+            <canvas id="businessOverviewChart"></canvas>
+        </div>
+    </div>
+    <div class="flex-container">
+        <div class="dashboard-section2">
+            <h2 class="text-center">Policy Volume Comparison</h2>
             <div class="chart-container">
-                <canvas id="businessOverviewChart"></canvas>
+                <canvas id="policyVolumeChart"></canvas>
             </div>
         </div>
-        <div class="flex-container">
-            <div class="dashboard-section2">
-                <h2 class="text-center">Policy Volume Comparison</h2>
-                <div class="chart-container">
-                    <canvas id="policyVolumeChart"></canvas>
-                </div>
-            </div>
-            <div class="dashboard-section4 ">
-                <h2 class="text-center">Insurance Types</h2>
-                <div class="card-deck policy-cards">
-                    <div class="card bg-purple policy-card">
-                        <div class="card-icon"><i class="fas fa-car"></i></div>
-                        <div class="card-title">Auto Insurance</div>
-                        <div class="card-text">320 policies</div>
-                    </div>
-                    <div class="card bg-green policy-card">
-                        <div class="card-icon"><i class="fas fa-home"></i></div>
-                        <div class="card-title">Home Insurance</div>
-                        <div class="card-text">210 policies</div>
-                    </div>
-                    <div class="card bg-red policy-card">
-                        <div class="card-icon"><i class="fas fa-briefcase-medical"></i></div>
-                        <div class="card-title">Health Insurance</div>
-                        <div class="card-text">450 policies</div>
-                    </div>
-                    <div class="card bg-orange policy-card">
-                        <div class="card-icon"><i class="fas fa-plane"></i></div>
-                        <div class="card-title">Travel Insurance</div>
-                        <div class="card-text">120 policies</div>
-                    </div>
-                </div>
+        <div class="dashboard-section4">
+            <h2 class="text-center">Top 5 Policy Performances</h2>
+            <div class="chart-container">
+                <canvas id="policyPerformanceChart"></canvas>
             </div>
         </div>
-        <div class="card-deck">
-            <div class="card bg-orange">
-                <div class="card-icon"><i class="fas fa-users"></i></div>
-                <div class="card-title">Total Customers</div>
-                <div class="card-text">1105</div>
-            </div>
-            <div class="card bg-green">
-                <div class="card-icon"><i class="fas fa-clock"></i></div>
-                <div class="card-title">Active</div>
-                <div class="card-text">68</div>
-            </div>
-            <div class="card bg-red">
-                <div class="card-icon"><i class="fas fa-ban"></i></div>
-                <div class="card-title">Suspended</div>
-                <div class="card-text">28</div>
-            </div>
-            <div class="card bg-blue">
-                <div class="card-icon"><i class="fas fa-sync"></i></div>
-                <div class="card-title">Pending Renewal</div>
-                <div class="card-text">85</div>
+    </div>
+    <div class="policy-cards">
+        <div class="card bg-orange policy-card">
+            <i class="fas fa-briefcase-medical card-icon"></i>
+            <div class="card-body">
+                <h5 class="card-title">Health Insurance</h5>
+                <p class="card-text">450 policies</p>
             </div>
         </div>
-        <div class="dashboard-section3 row justify-content-center">
-            <h2 class="">Customer Satisfaction Level</h2>
-            <div class="table-container">
-             <table class="table  table-responsive">
+        <div class="card bg-green policy-card">
+            <i class="fas fa-home card-icon"></i>
+            <div class="card-body">
+                <h5 class="card-title">Home Insurance</h5>
+                <p class="card-text">250 policies</p>
+            </div>
+        </div>
+        <div class="card bg-red policy-card">
+            <i class="fas fa-car card-icon"></i>
+            <div class="card-body">
+                <h5 class="card-title">Auto Insurance</h5>
+                <p class="card-text">320 policies</p>
+            </div>
+        </div>
+        <div class="card bg-blue policy-card">
+            <i class="fas fa-plane card-icon"></i>
+            <div class="card-body">
+                <h5 class="card-title">Travel Insurance</h5>
+                <p class="card-text">125 policies</p>
+            </div>
+        </div>
+        <div class="card bg-purple policy-card">
+            <i class="fas fa-users card-icon"></i>
+            <div class="card-body">
+                <h5 class="card-title"> Total Clients</h5>
+                <p class="card-text">1005</p>
+            </div>
+        </div>
+    </div>
+    <div class="dashboard-section5">
+        <h2 class="text-center ">Customer Satisfaction Level</h2>
+        <div class="table-container">
+            <table class="table table-responsive">
                 <thead>
                     <tr>
                         <th>Policy Number</th>
@@ -377,81 +448,102 @@
             </table>
         </div>
     </div>
-    </div>
-        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-        <script>
-            document.addEventListener('DOMContentLoaded', function() {
-                // Display date and time
-                var dateElement = document.getElementById('date');
-                var timeElement = document.getElementById('time');
-                
-                var today = new Date();
-
-                var options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
-                dateElement.textContent = today.toLocaleDateString('en-US', options);
-
-                function updateTime() {
-                    var now = new Date();
-                    timeElement.textContent = now.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' });
-                }
-
-                updateTime();
-                setInterval(updateTime, 60000);
-
-               
-
-               
-                // Business Overview Chart
-                var ctx1 = document.getElementById('businessOverviewChart').getContext('2d');
-                var businessOverviewChart = new Chart(ctx1, {
-                    type: 'bar',
-                    data: {
-                        labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
-                        datasets: [{
-                            label: 'Amount',
-                            data: [1200, 1900, 3000, 5000, 2300, 3200, 4000, 3800, 2900, 4400, 5200, 6100], // example data
-                            backgroundColor: 'rgb(22, 56, 8)',
-                            borderColor: 'rgba(75, 192, 192, 1)',
-                            borderWidth: 1
-                        }]
-                    },
-                    options: {
-                        scales: {
-                            y: {
-                                beginAtZero: true
-                            }
-                        }
-                    }
-                });
-
-                // Policy Volume Chart
-                var ctx2 = document.getElementById('policyVolumeChart').getContext('2d');
-                var policyVolumeChart = new Chart(ctx2, {
-                    type: 'doughnut',
-                    data: {
-                        labels: ['Active', 'Inactive', 'Pending'],
-                        datasets: [{
-                            label: 'Policy Volume',
-                            data: [855, 284, 19],
-                            backgroundColor: [
-                                'rgba(75, 192, 192, 2)',
-                                'rgba(255, 99, 132, 2)',
-                                'rgba(255, 206, 86, 2)'
-                            ],
-                            borderColor: [
-                                'rgba(75, 192, 192, 1)',
-                                'rgba(255, 99, 132, 1)',
-                                'rgba(255, 206, 86, 1)'
-                            ],
-                            borderWidth: 1
-                        }]
-                    }
-                });
-            });
-        </script>
-    </div>
 </div>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    function updateDateTime() {
+        var now = new Date();
+        var options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+        var dateStr = now.toLocaleDateString(undefined, options);
+        var timeStr = now.toLocaleTimeString();
+        document.getElementById('date').textContent = dateStr;
+        document.getElementById('time').textContent = timeStr;
+    }
+
+    setInterval(updateDateTime, 1000);
+
+    window.onload = function () {
+        updateDateTime();
+
+        var ctx1 = document.getElementById('businessOverviewChart').getContext('2d');
+        new Chart(ctx1, {
+            type: 'bar',
+            data: {
+                labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+                datasets: [{
+                         label: 'Amount',
+                         data: [1200, 1900, 3000, 5000, 2300, 3200, 4000, 3800, 2900, 4400, 5200, 6100], 
+                         backgroundColor: 'rgb(5, 3, 70, 0.4)',
+                         borderColor: 'rgba(5, 3, 70)',
+                         borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+
+        var ctx2 = document.getElementById('policyVolumeChart').getContext('2d');
+        new Chart(ctx2, {
+            type: 'line',
+            data: {
+                labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
+                datasets: [{
+                    label: 'Policies Sold',
+                    data: [300, 500, 400, 600, 700, 800],
+                    backgroundColor: 'black',
+                    borderColor: 'white',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+
+        var ctx3 = document.getElementById('policyPerformanceChart').getContext('2d');
+        new Chart(ctx3, {
+            type: 'pie',
+            data: {
+                labels: ['Policy A', 'Policy B', 'Policy C', 'Policy D', 'Policy E'],
+                datasets: [{
+                    label: 'Top Policies',
+                    data: [30, 25, 20, 15, 10],
+                    backgroundColor: [
+                        'rgba(255, 99, 132, 0.8)',
+                        'rgba(54, 162, 235, 0.8)',
+                        'rgba(255, 206, 86, 0.8)',
+                        'rgba(75, 192, 192, 0.8)',
+                        'rgba(153, 102, 255, 0.8)'
+                    ],
+                    borderColor: [
+                        'rgba(255, 99, 132, 2)',
+                        'rgba(54, 162, 235, 2)',
+                        'rgba(255, 206, 86, 2)',
+                        'rgba(75, 192, 192, 2)',
+                        'rgba(153, 102, 255, 2)'
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+            }
+        });
+    };
+</script>
 {% endblock %}
+
 
 
 
