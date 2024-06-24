@@ -39,6 +39,7 @@
             left: 200px; /* Adjusted for navbar width */
             width: calc(100% - 200px); /* Adjusted for navbar width */
         }
+        
     }
     .card {
         display: flex;
@@ -98,9 +99,36 @@
     .card-content p:last-child {
         margin-bottom: 0;
     }
+    @media (max-width: 769px) {
+        .card{
+            margin-top:160px;
+            max-width:230px;
+            justify-content: center;
+            align-items: center;
+            margin-bottom:5px;
+        }
+        .card-content h2 {
+            margin-bottom: 50px;
+            font-size: 1rem;
+            color: #333;
+        }
+        .card-details {
+            display: flex;
+            flex-direction: column;
+           
+            justify-content: center;
+            align-items: center;
+        }
+        .card img {
+            max-width: 60px;
+            border-radius: 8px;
+            margin-right: 0px;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+    }
     @media (max-width: 576px) {
         .card img {
-            max-width: 100px;
+            max-width: 80px;
             border-radius: 8px;
             margin-right: 0;
             transition: transform 0.3s, box-shadow 0.3s;

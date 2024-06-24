@@ -18,7 +18,6 @@
         left: 200px; /* Adjusted for navbar width */
         width: calc(100% - 200px); /* Adjusted for navbar width */
         height: calc(100% - 56px); /* Adjusted for navbar height */
-       
         display: flex;
         flex-direction: column;
         justify-content: flex-start;
@@ -34,7 +33,8 @@
         background-color: indigo;
     }
     .weather-card {
-        width: 700px;
+        width: 90%;
+        max-width: 700px;
         margin-bottom: 20px;
         margin-top: 50px;
         background-color: rgb(168, 254, 225);
@@ -71,7 +71,7 @@
     }
     .inspiration {
         font-size: 1rem;
-        color:indigo;
+        color: indigo;
         margin-top: 20px;
     }
     .card-deck {
@@ -79,7 +79,7 @@
         flex-wrap: wrap;
         justify-content: center;
         gap: 20px;
-        margin-top:30px;
+        margin-top: 30px;
     }
     .card {
         width: 250px;
@@ -116,9 +116,6 @@
     .bg-purple {
         background-color: #6f42c1;
     }
-    .bg-purple {
-        background-color: #6f42c1;
-    }
     .bg-orange .card-icon {
         color: #FFD700;
     }
@@ -127,9 +124,6 @@
     }
     .bg-red .card-icon {
         color: #FF6347;
-    }
-    .bg-blue .card-icon {
-        color: #1E90FF;
     }
     .bg-purple .card-icon {
         color: #DDA0DD;
@@ -141,143 +135,98 @@
     .card-text {
         font-size: 0.9rem;
     }
-    .performance-container{
-       
-        width: 700px !important;
-        height:400px !important;
+    .performance-container {
+        width: 90%;
+        max-width: 700px;
+        height: auto;
         margin-bottom: 20px;
         margin-top: 20px;
-        background-color:rgb(226, 148, 248);
+        background-color: rgb(226, 148, 248);
         border-radius: 15px;
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
         padding: 5px;
-      
-      
     }
-    @media (max-width: 716px) {
-        .overlay {
-            position: fixed;
-            top: 56px;
-            left: 0; /* Adjusted for smaller screens */
-            width: 100%; /* Adjusted for smaller screens */
-          
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-start;
-            align-items: center;
-            overflow-y: auto;
-            padding: 20px;
-            box-sizing: border-box;
-        }
+    .policy-cards {
         
-        .card {
-            max-width: 200px;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        margin: 20px 0;
+    }
+
+    .policy-card {
+        flex: 1 1 calc(50% - 20px);
+        margin: 10px;
+    }
+    .table-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+    }
+    .table {
+        margin: 20px 30px;
+        width: auto;
+        max-height:500px;
+        max-width: 1000px;
+        color: var(--text-color);
+        background-color: #343a40;
+        border-radius: 10px;
+        overflow: auto;
+    }
+
+    @media (max-width: 991px) {
+        .overlay {
+            left: 0;
+            width: 100%;
+            padding: 10px;
+        }
+        .performance-container {
+            height: auto;
+        }
+        .policy-cards {
             justify-content: center;
-            align-items: center;
-            margin-top: 10px;
-            border-radius: 10px;
         }
-        .card-title {
-            font-size: 0.8rem;
-            color: #ffffff;
-        }
-        .card-text {
-            font-size: 0.6rem;
-            color: #ffffff;
+
+        .policy-card,
+        .card {
+            width: 100%;
+            margin-bottom: 20px;
         }
     }
     @media (max-width: 576px) {
-        .overlay {
-            position: fixed;
-            top: 56px;
-            left: 0; /* Adjusted for smaller screens */
-            width: 100%; /* Adjusted for smaller screens */
-          
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-start;
-            align-items: center;
-            overflow-y: auto;
-            padding: 20px;
-            box-sizing: border-box;
+        .weather-card,
+        .performance-container {
+            max-width: 100%;
         }
-        .weather-card {
-            max-width: 200px;
-        }
-        .card {
-            max-width: 150px;
-            justify-content: center;
-            align-items: center;
-            margin-top: 10px;
-            border-radius: 10px;
-        }
-        .card-deck {
-            margin-top: 20px;
-        }
-        .weather-icon {
-            color: #007bff;
-            font-size: 2rem;
-        }
-        .card-title {
-            font-size: 0.9rem;
-            color: #ffffff;
-        }
-        .card-text {
-            font-size: 0.7rem;
-            color: #ffffff;
-        }
-        .weather-card .card-title {
-            color: #007bff;
-            font-weight: bold;
-            font-size: 0.7rem;
-        }
+        .weather-card .card-title,
         .weather-card .card-text {
-            font-size: 0.5rem;
-            color: #17a2b8;
+            font-size: 0.9rem;
         }
         .weather-card .inspiration {
             font-size: 0.8rem;
-            color: #6c757d;
-            font-style: italic;
         }
-        .weather-card .card-text span {
-            color: #28a745;
-            font-weight: bold;
+        .card-deck {
+            margin-top: 20px;
+            gap: 10px;
+        }
+        .card {
+            max-width: 150px;
+            height: auto;
+            padding: 10px;
+        }
+        .card-icon {
+            font-size: 2rem;
+        }
+        .card-title {
             font-size: 0.8rem;
         }
-        .profile-image {
-            max-width: 40px; /* Adjust as needed for smaller screens */
-            max-height: 40px; /* Adjust as needed for smaller screens */
-        }
-        .recent-visits-card label {
+        .card-text {
             font-size: 0.7rem;
-            font-weight: bold;
-            color: #333;
         }
-        .recent-visits-card input {
-            padding: 2px;
-            font-size: 0.5rem;
-            border: 1px solid #ccc;
-            border-radius: 5px;
+        h2{
+            font-size:1.5rem;
         }
-        h2 {
-            font-size: 1.3rem;
-        }
-        td {
-            font-size: 0.8rem;
-        }
-        th {
-            font-size: 0.9rem;
-        }
-        .performance-container {
-            max-width: 250px;
-            
-        }
-        h3{
-            font-size:1rem;
-        }
-        
-
     }
     /* Additional styling for weather card */
     .weather-card .card-title {
@@ -293,11 +242,10 @@
         color: #f39c12;
     }
     .weather-card .inspiration {
-        color:indigo;
+        color: indigo;
         font-style: italic;
         font-size: 1.2rem;
         font-weight: bold;
-
     }
     .weather-card .weather-icon {
         color: #007bff;
@@ -318,6 +266,7 @@
     /* Styling for recent visits table */
     .recent-visits-card {
         width: 90%;
+        max-width: 700px;
         margin-top: 20px;
         background-color: rgb(158, 154, 249);
         border-radius: 15px;
@@ -368,6 +317,35 @@
         border: 1px solid #ccc;
         border-radius: 5px;
     }
+    .policy-cards {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        margin-top: 30px;
+        width: 100%;
+        max-width: 700px;
+    }
+    .policy-card {
+        width: 48%;
+        margin-bottom: 20px;
+        border-radius: 15px;
+        transition: transform 0.2s, box-shadow 0.2s;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 20px;
+        box-sizing: border-box;
+    }
+    .policy-card:hover {
+        transform: scale(1.05);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+    @media (max-width: 576px) {
+        .policy-card {
+            width: 100%;
+        }
+    }
 </style>
 <div class="background-container"></div>
 <div class="overlay">
@@ -381,16 +359,17 @@
             </p>
         </div>
     </div>
-    <div class="performance-container"><canvas id="performanceChart" width="400" height="300"></canvas>
-    </div>
+    <div class="performance-container"><h2 class="text-center">Your Performance</h2><canvas id="performanceChart" width="400" height="300"></canvas>
+    </div><br>
     <div class="recent-visits-card">
-        <h3 class="text-center">Recently visited Clients</h3>
+        <h3 class="text-center"><b>Recent Visits</b></h3>
         <div class="filter-container">
+            <label for="filterInput">Date Filter:</label>
+            <input type="date" id="filterInput">
             
-            <label for="date-filter" class="datelabel">Date Filter:</label>
-            <input type="date" id="date-filter">
+           
         </div>
-        <table class="recent-visits-table table-responsive">
+        <table id="recentVisitsTable" class=" table-responsive recent-visits-table">
             <thead>
                 <tr>
                     <th>Client Name</th>
@@ -421,98 +400,119 @@
             </tbody>
         </table>
     </div>
-    <div class="card-deck">
-        <div class="card bg-purple policy-card">
-            <div class="card-icon"><i class="fas fa-car"></i></div>
-            <div class="card-title">Auto Insurance</div>
-            <div class="card-text">320 policies</div>
+    <div class="policy-cards" style="background-color:rgb(152, 196, 251);border-radius:10px; ">
+        
+        <div class="card bg-orange policy-card">
+            <i class="fas fa-briefcase-medical card-icon"></i>
+            <div class="card-body">
+                <h5 class="card-title">Health Insurance</h5>
+                <p class="card-text">450 policies</p>
+            </div>
         </div>
         <div class="card bg-green policy-card">
-            <div class="card-icon"><i class="fas fa-home"></i></div>
-            <div class="card-title">Home Insurance</div>
-            <div class="card-text">210 policies</div>
+            <i class="fas fa-home card-icon"></i>
+            <div class="card-body">
+                <h5 class="card-title">Home Insurance</h5>
+                <p class="card-text">250 policies</p>
+            </div>
         </div>
         <div class="card bg-red policy-card">
-            <div class="card-icon"><i class="fas fa-briefcase-medical"></i></div>
-            <div class="card-title">Health Insurance</div>
-            <div class="card-text">450 policies</div>
+            <i class="fas fa-car card-icon"></i>
+            <div class="card-body">
+                <h5 class="card-title">Auto Insurance</h5>
+                <p class="card-text">320 policies</p>
+            </div>
         </div>
-        <div class="card bg-orange policy-card">
-            <div class="card-icon"><i class="fas fa-plane"></i></div>
-            <div class="card-title">Travel Insurance</div>
-            <div class="card-text">120 policies</div>
+       
+        <div class="card bg-purple policy-card">
+            <i class="fas fa-plane card-icon"></i>
+            <div class="card-body">
+                <h5 class="card-title">Travel Insurance</h5>
+                <p class="card-text">125 policies</p>
+               
+            </div>
         </div>
-        
     </div>
-</div>
+    <div class="card-deck">
+        <div class="card bg-orange">
+            <i class="fas fa-clipboard-check card-icon"></i>
+            <h5 class="card-title">Tasks Completed</h5>
+            <p class="card-text">150</p>
+        </div>
+        <div class="card bg-green">
+            <i class="fas fa-users card-icon"></i>
+            <h5 class="card-title">New Clients</h5>
+            <p class="card-text">30</p>
+        </div>
+        <div class="card bg-red">
+            <i class="fas fa-exclamation-triangle card-icon"></i>
+            <h5 class="card-title">Pending Issues</h5>
+            <p class="card-text">5</p>
+        </div>
+        <div class="card bg-purple">
+            <i class="fas fa-chart-line card-icon"></i>
+            <h5 class="card-title">Monthly Sales</h5>
+            <p class="card-text">$12,000</p>
+        </div>
+    </div>
 
+</div>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script>
     document.addEventListener('DOMContentLoaded', function() {
-        // Display date and time
-        var dateElement = document.getElementById('date');
-        var timeElement = document.getElementById('time');
-        var inspirationElement = document.querySelector('.inspiration');
-        var today = new Date();
+        const filterInput = document.getElementById('filterInput');
+        const recentVisitsTable = document.getElementById('recentVisitsTable');
+        const rows = recentVisitsTable.getElementsByTagName('tr');
 
-        var options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
-        dateElement.textContent = today.toLocaleDateString('en-US', options);
-
-        function updateTime() {
-            var now = new Date();
-            timeElement.textContent = now.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' });
-        }
-
-        updateTime();
-        setInterval(updateTime, 60000); // Update time every minute
-
-        // Inspirational messages
-        var messages = [
-            "Every day is a fresh start.",
-            "Believe in yourself and all that you are.",
-            "Your only limit is your mind.",
-            "Push yourself, because no one else is going to do it for you.",
-            "Success is not for the lazy.",
-            "Believe you can and you're halfway there."
-        ];
-
-        // Randomly select a message
-        var randomMessage = messages[Math.floor(Math.random() * messages.length)];
-        inspirationElement.textContent = randomMessage;
+        filterInput.addEventListener('input', function() {
+            const filterValue = filterInput.value.toLowerCase();
+            for (let i = 1; i < rows.length; i++) {
+                const cells = rows[i].getElementsByTagName('td');
+                let match = false;
+                for (let j = 0; j < cells.length; j++) {
+                    if (cells[j].textContent.toLowerCase().includes(filterValue)) {
+                        match = true;
+                        break;
+                    }
+                }
+                rows[i].style.display = match ? '' : 'none';
+            }
+        });
     });
-   
-    document.addEventListener('DOMContentLoaded', function() {
-        // Mock data for agent performance (replace with actual data)
-        var agentPerformanceData = {
+
+    function updateTime() {
+        var now = new Date();
+        var date = now.toLocaleDateString();
+        var time = now.toLocaleTimeString();
+        document.getElementById('date').textContent = date;
+        document.getElementById('time').textContent = time;
+    }
+    setInterval(updateTime, 1000);
+
+    var ctx = document.getElementById('performanceChart').getContext('2d');
+    var performanceChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
             labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
             datasets: [{
                 label: 'Performance',
-                backgroundColor: 'rgb(5, 2, 87)',
-                borderColor: 'rgba(255, 99, 132, 1)',
+                backgroundColor: 'rgb(5, 2, 87,0.5)',
+                borderColor: 'rgba(255, 99, 132)',
                 borderWidth: 1,
-                data: [65, 59, 80, 81, 56, 55], // Replace with actual performance data
+                data: [65, 59, 80, 81, 56, 55],
             }]
-        };
-
-        // Get canvas element
-        var ctx = document.getElementById('performanceChart').getContext('2d');
-
-        // Create chart
-        var myChart = new Chart(ctx, {
-            type: 'bar',
-            data: agentPerformanceData,
-            options: {
-                scales: {
-                    y: {
-                        beginAtZero: true
-                    }
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
                 }
             }
-        });
-    
+        }
     });
-
 </script>
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 {% endblock %}
+
+
 

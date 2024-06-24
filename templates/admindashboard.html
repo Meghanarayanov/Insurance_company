@@ -18,6 +18,7 @@
         height: 100%;
         filter: blur(0.1px);
         z-index: -1;
+        overflow:auto;
     }
 
     .overlay {
@@ -127,10 +128,11 @@
         border-radius: 15px;
         padding: 20px;
         margin: 20px 10px;
-        width: 100%;
+        width: 60%;
         max-width: 1000px;
         color:rgb(5, 3, 70) ;
         box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+        
     }
     .dashboard-section5 {
         background-color:rgb(226, 234, 244);
@@ -158,6 +160,7 @@
     .chart-container {
         width: 100%;
         height: 300px;
+        
     }
 
     .table-container {
@@ -170,6 +173,7 @@
     .table {
         margin: 20px 30px;
         width: auto;
+        max-height:500px;
         max-width: 1000px;
         color: var(--text-color);
         background-color: #343a40;
@@ -297,6 +301,20 @@
             width: 100%;
             height: auto;
         }
+        .flex-container {
+            flex-direction: column;
+        }
+
+        .dashboard-section2,
+        .dashboard-section4 {
+            padding: 10px;
+            margin: 0;
+        }
+
+        .dashboard-section4 {
+            margin-top: 20px;
+        }
+        
     }
 
     @media (max-width: 576px) {
@@ -307,7 +325,9 @@
             margin-top: 10px;
             border-radius: 10px;
         }
-
+        h2{
+            font-size:1.5rem;
+        }
         .card-title {
             font-size: 0.9rem;
         }
@@ -340,6 +360,19 @@
             width: 100%;
             height: auto;
         }
+        .flex-container {
+            flex-direction: column;
+        }
+
+        .dashboard-section2,
+        .dashboard-section4 {
+            padding: 10px;
+            margin: 0;
+        }
+
+        .dashboard-section4 {
+            margin-top: 20px;
+        }
     }
 </style>
 
@@ -356,20 +389,20 @@
         </div>
     </div>
     <div class="dashboard-section">
-        <h2>Business Overview</h2>
+        <h2 class="text-center">Business Overview</h2>
         <div class="chart-container">
-            <canvas id="businessOverviewChart"></canvas>
+            <canvas  id="businessOverviewChart"></canvas>
         </div>
     </div>
     <div class="flex-container">
         <div class="dashboard-section2">
-            <h2 class="text-center">Policy Volume Comparison</h2>
+            <h2 class="text-center">Top 5 Policy Performances</h2>
             <div class="chart-container">
                 <canvas id="policyVolumeChart"></canvas>
             </div>
         </div>
         <div class="dashboard-section4">
-            <h2 class="text-center">Top 5 Policy Performances</h2>
+            <h2 class="text-center">Policy Volume Comparison</h2>
             <div class="chart-container">
                 <canvas id="policyPerformanceChart"></canvas>
             </div>

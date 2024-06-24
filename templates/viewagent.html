@@ -57,17 +57,29 @@
         overflow-y: auto;
         overflow-x: auto; /* Allow horizontal scrolling */
         margin: 0 auto; /* Center the table container */
+        
     }
     .table-responsive {
         width: 100%;
         display: block;
         overflow-x: auto; /* Enable horizontal scrolling */
+       
     }
     table {
         width: 100%;
         border-collapse: collapse;
         
     }
+    th{
+        background-color: rgb(3, 1, 34);
+    }
+    td{
+        background-color: rgb(6, 4, 48,0.7);
+    }
+    tr:hover{
+        background-color: rgb(6, 4, 48);
+    }
+
     th, td {
         padding: 8px;
         text-align: left;
@@ -252,7 +264,7 @@
                         <p class="text-white">Email: Arun@gmail.com</p>
                         <p class="text-white">Contact:9867453212 </p>
                         <p class="text-white">Position:Insurance Specialist</p>
-                        <button class="btn btn-primary mb-2"><a class="  text-white" href="{% url 'client_details' %}">client Details</a></button>
+                        <button class="btn btn-primary mb-2"><a class="  text-white" href="{% url 'client_details' %}">Client Details</a></button>
                        
                         
                     </div>
