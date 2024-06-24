@@ -1,6 +1,8 @@
 from django.shortcuts import render
 
 # Create your views here.
+def index(request):
+    return render(request,'index.html')
 def admindashboard(request):
     return render(request,'admindashboard.html')
 def addagent(request):

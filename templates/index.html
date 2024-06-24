@@ -1,0 +1,170 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+<style>
+    
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        .header, .footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 1em 0;
+        }
+        .container {
+            padding: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: white;
+        }
+        .hero {
+            background:  url('{% static "images/admin.jpg" %}') no-repeat center center/cover;
+            color: white;
+            text-align: center;
+            padding: 100px 20px;
+            margin-top:60px;
+        }
+        .section {
+            margin: 20px 0;
+        }
+        .section h2 {
+            color: #333;
+        }
+        .button {
+            background-color: #007BFF;
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            display: inline-block;
+            margin: 10px 0;
+        }
+        .faq-item {
+            margin: 10px 0;
+        }
+        .social-icons img {
+            width: 30px;
+            margin: 0 10px;
+        }
+        .footer-links {
+            color: #bbb;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+    </style>
+</head>
+<body>
+
+   
+
+    <div class="hero">
+        <h2>Manage Your Insurance Hassle-Free</h2>
+        <p>Comprehensive Coverage | Easy Management | Expert Support | Fast Claims</p>
+        <a href="#get-started" class="button">Get Started Today</a>
+    </div>
+
+    <div class="container">
+        <!-- Why Choose Us Section -->
+        <div class="section" id="why-choose-us">
+            <h2>Why Choose Us?</h2>
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Comprehensive Coverage</h5>
+                            <p class="card-text">Tailored insurance plans to suit your needs.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Easy Management</h5>
+                            <p class="card-text">Simplified policy handling with our user-friendly platform.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Expert Support</h5>
+                            <p class="card-text">Dedicated customer service to guide you every step of the way.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Fast Claims</h5>
+                            <p class="card-text">Quick and efficient claims processing.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Our Services Section -->
+        <div class="section" id="services">
+            <h2>Our Services</h2>
+            <div class="row">
+                <div class="col-md-6">
+                    <h3>Personal Insurance:</h3>
+                    <ul>
+                        <li>Auto Insurance</li>
+                        <li>Home Insurance</li>
+                        <li>Life Insurance</li>
+                        <li>Health Insurance</li>
+                    </ul>
+                </div>
+                <div class="col-md-6">
+                    <h3>Business Insurance:</h3>
+                    <ul>
+                        <li>Property Insurance</li>
+                        <li>Liability Insurance</li>
+                        <li>Workers’ Compensation</li>
+                        <li>Commercial Auto Insurance</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- How It Works Section -->
+        <div class="section" id="how-it-works">
+            <h2>How It Works</h2>
+            <ol>
+                <li><strong>Get a Quote:</strong> Fill out our simple form to get a customized quote.</li>
+                <li><strong>Choose Your Plan:</strong> Select the best insurance plan that fits your needs.</li>
+                <li><strong>Manage Online:</strong> Access your policies, make payments, and file claims through our online portal.</li>
+                <li><strong>Support:</strong> Our expert team is here to assist you 24/7.</li>
+            </ol>
+        </div>
+
+       
+
+        
+
+       
+    </div>
+
+    <div class="footer">
+        <p>&copy; 2024 [Your Company Name] - Simplifying Insurance Management</p>
+        <div class="social-icons">
+            <a href="#"><img src="facebook-icon.png" alt="Facebook"></a>
+            <a href="#"><img src="twitter-icon.png" alt="Twitter"></a>
+            <a href="#"><img src="linkedin-icon.png" alt="LinkedIn"></a>
+        </div>
+        <p>
+            <a href="#" class="footer-links">Privacy Policy</a> |
+            <a href="#" class="footer-links">Terms of Service</a> |
+            <a href="#" class="footer-links">Contact</a> |
+            <a href="#" class="footer-links">FAQ</a>
+        </p>
+    </div>
+
+</body>
+</html>
+{% endblock %}

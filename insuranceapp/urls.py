@@ -5,6 +5,7 @@ from . import views
 
 urlpatterns = [
     path('',views.admindashboard,name='admindashboard'),
+    path("index",views.index,name="index"),
     path('addagent',views.addagent,name='addagent'),
     path('viewagent',views.viewagent,name='viewagent'),
     path('campaign',views.campaign,name='campaign'),
