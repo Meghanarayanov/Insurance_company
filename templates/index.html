@@ -2,169 +2,207 @@
 {% block content %}
 {% load static %}
 <style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f4f4f4;
+    }
+    .header, .footer {
+        background-color: #333;
+        color: white;
+        text-align: center;
+        padding: 1em 0;
+    }
+    .container {
+        padding: 20px;
+        max-width: 100%;
+        margin: 0 ;
+        background-color:#B5E9EF;
+    }
+    .hero {
+        background: url('{% static "images/admin.jpg" %}') no-repeat center center/cover;
+        color: white;
+        text-align: center;
+        padding: 100px 20px;
+        margin-top: 65px;
+        height:450px;
+    }
+    .hero h2, .hero p ,.hero button {
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.9);
+        margin-top: 22px;
+    }
+    .section {
+        margin: 20px 0;
+    }
+    .section h2 {
+        color: #333;
+    }
+    .button {
+        background-color: #007BFF;
+        color: white;
+        padding: 10px 20px;
+        text-decoration: none;
+        border-radius: 5px;
+        display: inline-block;
+        margin: 10px 0;
+    }
+    .card {
+        padding: 20px;
+        border-radius: 10px;
+        margin: 10px 0;
+        text-align: center;
+        color: white;
+    }
+    .card h5 {
+        margin-bottom: 15px;
+    }
+    .card p {
+        margin-bottom: 0;
+    }
+    .card-1 {
+        background-color: #007BFF;
+    }
+    .card-2 {
+        background-color: #28a745;
+    }
+    .card-3 {
+        background-color: #dc3545;
+    }
+    .card-4 {
+        background-color: #ffc107;
+    }
+    .card-5 {
+        background-color: #17a2b8;
+    }
+    .card-6 {
+        background-color: #6f42c1;
+    }
+   
     
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f4f4f4;
-        }
-        .header, .footer {
-            background-color: #333;
-            color: white;
-            text-align: center;
-            padding: 1em 0;
-        }
-        .container {
-            padding: 20px;
-            max-width: 1200px;
-            margin: 0 auto;
-            background-color: white;
-        }
-        .hero {
-            background:  url('{% static "images/admin.jpg" %}') no-repeat center center/cover;
-            color: white;
-            text-align: center;
-            padding: 100px 20px;
-            margin-top:60px;
-        }
-        .section {
-            margin: 20px 0;
-        }
-        .section h2 {
-            color: #333;
-        }
-        .button {
-            background-color: #007BFF;
-            color: white;
-            padding: 10px 20px;
-            text-decoration: none;
-            border-radius: 5px;
-            display: inline-block;
-            margin: 10px 0;
-        }
-        .faq-item {
-            margin: 10px 0;
-        }
-        .social-icons img {
-            width: 30px;
-            margin: 0 10px;
-        }
-        .footer-links {
-            color: #bbb;
-            text-decoration: none;
-            margin: 0 10px;
-        }
-    </style>
+    .footer-links {
+        color: #bbb;
+        text-decoration: none;
+        margin: 0 10px;
+    }
+    .icon {
+        font-size: 2em;
+        margin-bottom: 10px;
+    }
+</style>
 </head>
 <body>
 
-   
+<div class="hero">
+    <h2>Manage Your Insurance Hassle-Free</h2>
+    <p>Comprehensive Coverage | Easy Management | Expert Support | Fast Claims</p>
+    <button class="btn btn-primary"><a href="{% url 'loginpage' %}" class="text-white text-decoration-none">Get Started Today</a></button>
+</div>
 
-    <div class="hero">
-        <h2>Manage Your Insurance Hassle-Free</h2>
-        <p>Comprehensive Coverage | Easy Management | Expert Support | Fast Claims</p>
-        <a href="#get-started" class="button">Get Started Today</a>
-    </div>
-
-    <div class="container">
-        <!-- Why Choose Us Section -->
-        <div class="section" id="why-choose-us">
-            <h2>Why Choose Us?</h2>
-            <div class="row">
-                <div class="col-md-3">
-                    <div class="card">
-                        <div class="card-body">
-                            <h5 class="card-title">Comprehensive Coverage</h5>
-                            <p class="card-text">Tailored insurance plans to suit your needs.</p>
-                        </div>
-                    </div>
+<div class="container">
+    <!-- Why Choose Us Section -->
+    <div class="section" id="why-choose-us">
+        <h2>Why Choose Us?</h2>
+        <div class="row">
+            <div class="col-md-3">
+                <div class="card card-1">
+                    <div class="icon">&#x1F4C8;</div>
+                    <h5 class="card-title">Comprehensive Coverage</h5>
+                    <p class="card-text">Tailored insurance plans to suit your needs.</p>
                 </div>
-                <div class="col-md-3">
-                    <div class="card">
-                        <div class="card-body">
-                            <h5 class="card-title">Easy Management</h5>
-                            <p class="card-text">Simplified policy handling with our user-friendly platform.</p>
-                        </div>
-                    </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card card-2">
+                    <div class="icon">&#x1F4BB;</div>
+                    <h5 class="card-title">Easy Management</h5>
+                    <p class="card-text">Simplified policy handling with our user-friendly platform.</p>
                 </div>
-                <div class="col-md-3">
-                    <div class="card">
-                        <div class="card-body">
-                            <h5 class="card-title">Expert Support</h5>
-                            <p class="card-text">Dedicated customer service to guide you every step of the way.</p>
-                        </div>
-                    </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card card-3">
+                    <div class="icon">&#x1F464;</div>
+                    <h5 class="card-title">Expert Support</h5>
+                    <p class="card-text">Dedicated customer service to guide you every step of the way.</p>
                 </div>
-                <div class="col-md-3">
-                    <div class="card">
-                        <div class="card-body">
-                            <h5 class="card-title">Fast Claims</h5>
-                            <p class="card-text">Quick and efficient claims processing.</p>
-                        </div>
-                    </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card card-4">
+                    <div class="icon">&#x1F4E6;</div>
+                    <h5 class="card-title">Fast Claims</h5>
+                    <p class="card-text">Quick and efficient claims processing.</p>
                 </div>
             </div>
         </div>
+    </div>
 
-        <!-- Our Services Section -->
-        <div class="section" id="services">
-            <h2>Our Services</h2>
-            <div class="row">
-                <div class="col-md-6">
-                    <h3>Personal Insurance:</h3>
-                    <ul>
-                        <li>Auto Insurance</li>
-                        <li>Home Insurance</li>
-                        <li>Life Insurance</li>
-                        <li>Health Insurance</li>
-                    </ul>
+    <!-- Our Services Section -->
+    <div class="section" id="services">
+        <h2>Our Services</h2>
+        <div class="row">
+            <div class="col-md-6">
+                <h3>Personal Insurance</h3>
+                <ul>
+                    <li>Auto Insurance</li>
+                    <li>Home Insurance</li>
+                    <li>Life Insurance</li>
+                    <li>Health Insurance</li>
+                </ul>
+            </div>
+            <div class="col-md-6">
+                <h3>Business Insurance</h3>
+                <ul>
+                    <li>Property Insurance</li>
+                    <li>Liability Insurance</li>
+                    <li>Workers’ Compensation</li>
+                    <li>Commercial Auto Insurance</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- E-Insurance Section -->
+    <div class="section" id="e-insurance">
+        <h2>E-Insurance</h2>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="card card-5">
+                    <div class="icon">&#x1F4F1;</div>
+                    <h5 class="card-title">Digital Policies</h5>
+                    <p class="card-text">Access your insurance policies anytime, anywhere.</p>
                 </div>
-                <div class="col-md-6">
-                    <h3>Business Insurance:</h3>
-                    <ul>
-                        <li>Property Insurance</li>
-                        <li>Liability Insurance</li>
-                        <li>Workers’ Compensation</li>
-                        <li>Commercial Auto Insurance</li>
-                    </ul>
+            </div>
+            <div class="col-md-4">
+                <div class="card card-6">
+                    <div class="icon">&#x1F4C4;</div>
+                    <h5 class="card-title">Paperless Documentation</h5>
+                    <p class="card-text">Say goodbye to physical paperwork with our e-insurance solutions.</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card card-1">
+                    <div class="icon">&#x1F4B8;</div>
+                    <h5 class="card-title">Online Payments</h5>
+                    <p class="card-text">Secure and easy online payment options for your convenience.</p>
                 </div>
             </div>
         </div>
-
-        <!-- How It Works Section -->
-        <div class="section" id="how-it-works">
-            <h2>How It Works</h2>
-            <ol>
-                <li><strong>Get a Quote:</strong> Fill out our simple form to get a customized quote.</li>
-                <li><strong>Choose Your Plan:</strong> Select the best insurance plan that fits your needs.</li>
-                <li><strong>Manage Online:</strong> Access your policies, make payments, and file claims through our online portal.</li>
-                <li><strong>Support:</strong> Our expert team is here to assist you 24/7.</li>
-            </ol>
-        </div>
-
-       
-
-        
-
-       
     </div>
+</div>
 
-    <div class="footer">
-        <p>&copy; 2024 [Your Company Name] - Simplifying Insurance Management</p>
-        <div class="social-icons">
-            <a href="#"><img src="facebook-icon.png" alt="Facebook"></a>
-            <a href="#"><img src="twitter-icon.png" alt="Twitter"></a>
-            <a href="#"><img src="linkedin-icon.png" alt="LinkedIn"></a>
-        </div>
-        <p>
-            <a href="#" class="footer-links">Privacy Policy</a> |
-            <a href="#" class="footer-links">Terms of Service</a> |
-            <a href="#" class="footer-links">Contact</a> |
-            <a href="#" class="footer-links">FAQ</a>
-        </p>
+<div class="footer">
+    <p>Copyright &copy; 2024 [Company Name] - Simplifying Insurance Management</p>
+    <div class="social-icons">
+        <p class="follow text-white text-center">Follow Us On</p>
+        <a href="#" class="social-icon text-white"><i class="fab fa-facebook-f"></i></a>
+        <a href="#" class="social-icon text-white"><i class="fab fa-twitter"></i></a>
+        <a href="#" class="social-icon text-white"><i class="fab fa-instagram"></i></a>
     </div>
+    
+    
+</div>
 
 </body>
 </html>
 {% endblock %}
+
+

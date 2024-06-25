@@ -4,8 +4,12 @@ from . import views
 
 
 urlpatterns = [
-    path('',views.admindashboard,name='admindashboard'),
-    path("index",views.index,name="index"),
+   
+    path("",views.index,name="index"),
+    path("loginpage",views.loginpage,name="loginpage"),
+    path("login_db",views.login_db,name="login_db"),
+    path("contactus",views.contactus,name="contactus"),
+    path('admindashboard',views.admindashboard,name='admindashboard'),
     path('addagent',views.addagent,name='addagent'),
     path('viewagent',views.viewagent,name='viewagent'),
     path('campaign',views.campaign,name='campaign'),
@@ -18,7 +22,8 @@ urlpatterns = [
     path('agent_profile',views.agent_profile,name='agent_profile'),
     path('edit_agent',views.edit_agent,name='edit_agent'),
     path('change_password',views.change_password,name='change_password'),
-    path('cutomer_informations',views.cutomer_informations,name='cutomer_informations')
+    path('cutomer_informations',views.cutomer_informations,name='cutomer_informations'),
+    path("logout",views.logout,name="logout"),
    
    
    

@@ -1,8 +1,25 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 
 # Create your views here.
 def index(request):
     return render(request,'index.html')
+def loginpage(request):
+    return render(request,'loginpage.html')
+def login_db(request):
+    
+    if request.method == 'POST':
+        username = request.POST.get('username')
+       
+       
+        
+        if username == 'admin':
+             return redirect('admindashboard')  
+        else:
+            return redirect('agentdashboard')  
+    else:
+       return render(request, 'loginpage.html')
+def contactus(request):
+    return render(request,'contactus.html')
 def admindashboard(request):
     return render(request,'admindashboard.html')
 def addagent(request):
@@ -33,6 +50,8 @@ def change_password(request):
     return render(request,'change_password.html')
 def cutomer_informations(request):
     return render(request,'customerinformation.html')
+def logout(request):
+    return render(request,'index.html')
 
 
 

@@ -4,8 +4,10 @@
     {% load static %}
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Insurance</title>
     
+    <title>INSURANCE</title>
+   
+    <link rel="shortcut icon" type="image/png" href="{% static 'images/logo6.png' %}">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
     <link rel="shortcut-icon" type="image" href="tuitionicon.jpg">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
@@ -143,8 +145,8 @@
             
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
-                    <a class="nav-link text-white d-none d-lg-block" href=""><i class="fas fa-sign-out-alt"></i>Log Out</a> <!-- Hide on smaller screens -->
-                    <button class="btn btn-light text-dark d-block d-lg-none mt-2 logoutbuttn"><a href=""><i class="fas fa-sign-out-alt"></i>Log Out</a></button> <!-- Show on smaller screens -->
+                    <a class="nav-link text-white d-none d-lg-block" href="{% url 'logout' %}"><i class="fas fa-sign-out-alt"></i>Log Out</a> <!-- Hide on smaller screens -->
+                    <button class="btn btn-light text-dark d-block d-lg-none mt-2 logoutbuttn"><a href="{% url 'logout' %}"><i class="fas fa-sign-out-alt"></i>Log Out</a></button> <!-- Show on smaller screens -->
                 </li>
             </ul>
         </div>

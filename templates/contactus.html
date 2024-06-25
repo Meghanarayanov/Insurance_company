@@ -1,0 +1,133 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+<style>
+    body, html {
+        height: 100%;
+        margin: 0;
+        font-family: Arial, sans-serif;
+    }
+    .header, .footer {
+        background-color: #333;
+        color: white;
+        text-align: center;
+        padding: 1em 0;
+    }
+    .hero {
+        background: url('{% static "images/card1.jpg" %}') no-repeat center center/cover;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        padding: 20px;
+        box-sizing: border-box;
+    }
+    .contact-container {
+        background-color: rgba(255, 255, 255, 0.8);
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        text-align: center;
+        width: 100%;
+        max-width: 400px;
+        margin-top: 40px;
+        box-sizing: border-box;
+    }
+    .contact-container h2 {
+        margin-bottom: 20px;
+        color: #333;
+    }
+    .contact-container input[type="text"],
+    .contact-container input[type="email"],
+    .contact-container textarea {
+        width: 100%;
+        padding: 10px;
+        margin: 10px 0;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        box-sizing: border-box;
+    }
+    .contact-container button {
+        background-color: #0056b3;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        width: 100%;
+        margin-top: 20px;
+        box-sizing: border-box;
+    }
+    .contact-container button:hover {
+        background-color: #007BFF;
+    }
+    @media (max-width: 769px) {
+        .contact-container {
+            padding: 15px;
+            max-width: 90%;
+           
+        }
+        .contact-container h2 {
+            font-size: 1.5em;
+        }
+        .contact-container input[type="text"],
+        .contact-container input[type="email"],
+        .contact-container textarea {
+            padding: 8px;
+        }
+        .contact-container button {
+            padding: 8px 15px;
+        }
+    }
+    @media (max-width: 576px) {
+      
+        .contact-container {
+            padding: 15px;
+            max-width: 90%;
+            margin-top:100px;
+           
+        }
+        .contact-container h2 {
+            font-size: 1.5em;
+        }
+        .contact-container input[type="text"],
+        .contact-container input[type="email"],
+        .contact-container textarea {
+            padding: 8px;
+        }
+        .contact-container button {
+            padding: 8px 15px;
+        }
+        }
+</style>
+</head>
+<body>
+
+<div class="hero">
+    <div class="contact-container">
+        <h2>Contact Us</h2>
+        <form method="POST" action="">
+            {% csrf_token %}
+            <input type="text" name="name" placeholder="Your Name" required>
+            <input type="email" name="email" placeholder="Your Email" required>
+            <textarea name="message" placeholder="Your Message" rows="3" required></textarea>
+            <button type="submit" class="btn">Send Message</button>
+        </form>
+    </div>
+</div>
+<div class="footer">
+    <p>Copyright &copy; 2024 [Company Name] - Simplifying Insurance Management</p>
+    <div class="social-icons">
+        <p class="follow text-white text-center">Follow Us On</p>
+        <a href="#" class="social-icon text-white"><i class="fab fa-facebook-f"></i></a>
+        <a href="#" class="social-icon text-white"><i class="fab fa-twitter"></i></a>
+        <a href="#" class="social-icon text-white"><i class="fab fa-instagram"></i></a>
+    </div>
+    
+    
+</div>
+
+</body>
+</html>
+{% endblock %}
+
