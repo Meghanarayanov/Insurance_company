@@ -2,6 +2,12 @@
 {% block content %}
 {% load static %}
 <style>
+    body, html {
+        margin: 0;
+        padding: 0;
+        font-family: Arial, sans-serif;
+        background-color: #f0f2f5;
+    }
     .background-container {
         background-image: url('{% static "images/admin.jpg" %}');
         background-repeat: no-repeat;
@@ -11,298 +17,155 @@
         left: 0;
         width: 100%;
         height: 100%;
-        filter: blur(0.1px);
+       
         z-index: -1;
     }
     .overlay {
         position: fixed;
-        top: 66px; /* Adjusted for navbar height */
-        left: 200px; /* Adjusted for navbar width */
-        width: calc(100% - 200px); /* Adjusted for navbar width */
-        height: calc(100% - 56px); /* Adjusted for navbar height */
-        display: flex;
-        justify-content: center;
-        align-items: center;
-         /* Allow vertical scrolling */
-        padding: 20px; /* Additional padding for better spacing */
+        top: 56px;
+        left: 200px;
+        width: calc(100% - 200px);
+        height: calc(100% - 56px);
+        padding: 20px;
         background-color: rgba(12, 9, 9, 0.5);
-        
-    }
-    @media (min-width: 992px) {
-        .vertical-nav {
-            position: fixed;
-            top: 56px;
-            left: 0;
-            width: 200px;
-            height: 100%;
-            
-            overflow-y: auto;
-            padding-top: 30px;
-        }
-        .nav-link {
-           
-           
-            border-radius:10px;
-        }
-        .nav-link:hover {
-            background-color:blueviolet;
-        }
-    }
-    .table-container {
-        position: relative;
-        z-index: 1;
-        width: 100%;
-        max-width: 100%; /* Ensure full width on smaller screens */
-        height: calc(100% - 56px); /* Adjusted for navbar height */
         overflow-y: auto;
-        overflow-x: auto; /* Allow horizontal scrolling */
-        margin: 0 auto; /* Center the table container */
     }
-    .table-responsive {
-        width: 100%;
-        display: block;
-        overflow-x: auto; /* Enable horizontal scrolling */
-    }
-    table {
-        width: 100%;
-        border-collapse: collapse;
-        
-    }
-    th, td {
-        padding: 8px;
-        text-align: left;
-        border: 1px solid #ddd;
-    }
-    th{
-        background-color: rgb(3, 1, 34);
-    }
-    td{
-        background-color: rgb(6, 4, 48,0.7);
-    }
-    tr:hover{
-        background-color: rgb(6, 4, 48);
-    }
-    .profile-image {
-        max-width: 100px; /* Adjust as needed */
-        max-height: 100px; /* Adjust as needed */
-    }
-    .cert-image {
-        max-width: 100px; /* Adjust as needed */
-        max-height: 100px; /* Adjust as needed */
-    }
-    @media (max-width: 991px) {
+    @media (max-width: 992px) {
         .overlay {
-            top: 56px; /* Adjust for navbar height */
             left: 0;
             width: 100%;
-            height: calc(100% - 56px); /* Adjust for navbar height */
-            padding: 10px; /* Reduce padding for smaller screens */
-        }
-        .table-container {
-            padding: 10px; /* Reduce padding for smaller screens */
-            max-width: 100%; /* Ensure full width on smaller screens */
-            height: calc(100% - 56px); /* Adjust for navbar height */
         }
     }
-    .card {
+    .client-list {
         display: flex;
-        justify-content: center;
+        flex-wrap: wrap;
+        list-style-type: none;
+        padding: 0;
+        margin: 0 auto;
+        width: 90%;
+        justify-content: space-between;
+    }
+    .client-item {
+        display: flex;
         align-items: center;
-        background: blueviolet;
+        background: #fff;
         border-radius: 10px;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-        max-width: 300px;
-        width: 100%;
-        padding: 0px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        margin-bottom: 20px;
+        padding: 10px;
+        transition: transform 0.3s, box-shadow 0.3s;
+        width: calc(50% - 10px); /* Two items per row with some gap */
         box-sizing: border-box;
-        margin-top: 5px;
-        padding-top:15px;
-        transition: transform 0.3s, box-shadow 0.3s;
     }
-    .card:hover {
-        transform: translateY(-10px);
-        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+    .client-item:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
     }
-    
-    .card img {
-        max-width: 150px;
-        border-radius: 8px;
-        margin-right: 0px;
-        transition: transform 0.3s, box-shadow 0.3s;
+    .client-item img {
+        border-radius: 50%;
+        width: 100px;
+        height: 100px;
+        object-fit: cover;
+        margin-right: 20px;
     }
-    .card img:hover {
-        transform: scale(1.1);
-        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+    .client-details {
+        flex-grow: 1;
     }
-    .card-details {
-        display: flex;
-        flex-direction: column;
-       
-        justify-content: center;
-        align-items: center;
-    }
-    .card-content h2 {
-        margin-bottom: 10px;
-        font-size: 24px;
+    .client-details h5 {
+        font-size: 1.25rem;
+        margin: 0;
         color: #333;
     }
-    .card-content p {
-        margin-bottom: 10px;
-        font-weight: bold;
+    .client-details p {
+        margin: 5px 0;
         color: #666;
     }
-    .card-content p a {
-        color: #007BFF;
-        text-decoration: none;
-        transition: color 0.3s;
+    .client-button {
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        padding: 10px 20px;
+        cursor: pointer;
+        transition: background-color 0.3s;
     }
-    .card-content p a:hover {
-        color: #0056b3;
+    .client-button:hover {
+        background-color: #0056b3;
     }
-    .card-content p:last-child {
-        margin-bottom: 0;
-    }
-    
-    @media (max-width: 575px) {
-        .profile-image {
-            max-width: 40px; /* Adjust as needed for smaller screens */
-            max-height: 40px; /* Adjust as needed for smaller screens */
+    @media (max-width: 768px) {
+        .client-item {
+            width: 100%;
         }
-        
-       
-        h2{
-            font-size:1.3rem;
-        }
-        td{
-            font-size:0.8rem;
-        }
-        th{
-            font-size:0.9rem;
-        }
-        .btn{
-            
-            font-size: 0.6rem;
-            padding: 2px 2px;
-            margin-bottom:3px;
-             }
-             .card{
-                max-width:250px;
-                justify-content: center;
-                align-items: center;
-            }
-            .card-details {
-                display: flex;
-                flex-direction: column;
-               
-                justify-content: center;
-                align-items: center;
-            }     
     }
 </style>
-<body>
 <div class="background-container"></div>
 <div class="overlay">
-    <div class="container table-container">
-        <h2 class="text-center text-white">Client Details</h2>
-        <br>
-        <div class="table-responsive">
-            <table class="table table-bordered text-white text-center">
-                <thead >
-                    <tr class="">
-                        <th>Client Name</th>
-                        <th>Photo</th>
-                        <th>Email Address</th>
-                        <th>Address</th>
-                        <th>Action</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    
-                    <tr>
-                        <td>John</td>
-                        <td><img src="{% static "images/nibi.jpeg" %}" alt="" class="profile-image">
-                           
-                        </td>
-                        <td>john@gmail.com</td>
-                        <td>Malappuram</td>
-                        
-                        
-                        <td><a class=" track text-white" href="{% url 'clientdetail_view' %}">View Dteails</a></td>
-                        
-                    </tr>
-                    <tr>
-                        <td>Maya</td>
-                        <td><img src="{% static "images/kavya.jpg" %}" alt="" class="profile-image">
-                           
-                        </td>
-                        <td>maya@gmail.com</td>
-                        <td>Kottayam</td>
-                        
-                        
-                        <td><a class=" track text-white" href="">View Dteails</a></td>
-                        
-                    </tr>
-
-                </tbody>
-            </table>
-
-        </div>
-    </div>
+    <h2 class="text-center text-white w-100 mt-5">Clients</h2>
+    <ul class="client-list mt-5">
+        <li class="client-item">
+            <img src="{% static 'images/nibi.jpeg' %}" alt="John's Picture">
+            <div class="client-details">
+                <h5>John</h5>
+            </div>
+            <button class="client-button" onclick="location.href='{% url 'clientdetail_view' %}'">See Details</button>
+        </li>
+        <li class="client-item">
+            <img src="{% static 'images/kavya.jpg' %}" alt="Rose's Picture">
+            <div class="client-details">
+                <h5>Rose</h5>
+            </div>
+            <button class="client-button" onclick="location.href='{% url 'clientdetail_view' %}'">See Details</button>
+        </li>
+        <li class="client-item">
+            <img src="{% static 'images/client.jpeg' %}" alt="Dona's Picture">
+            <div class="client-details">
+                <h5>Dona</h5>
+            </div>
+            <button class="client-button" onclick="location.href='{% url 'clientdetail_view' %}'">See Details</button>
+        </li>
+        <li class="client-item">
+            <img src="{% static 'images/client2.jpeg' %}" alt="Daniel's Picture">
+            <div class="client-details">
+                <h5>Daniel</h5>
+            </div>
+            <button class="client-button" onclick="location.href='{% url 'clientdetail_view' %}'">See Details</button>
+        </li>
+        <li class="client-item">
+            <img src="{% static 'images/profile2.jpeg' %}" alt="Daniel's Picture">
+            <div class="client-details">
+                <h5>Daniel</h5>
+            </div>
+            <button class="client-button" onclick="location.href='{% url 'clientdetail_view' %}'">See Details</button>
+        </li>
+        <li class="client-item">
+            <img src="{% static 'images/profile6.jpeg' %}" alt="Akash's Picture">
+            <div class="client-details">
+                <h5>Akash</h5>
+            </div>
+            <button class="client-button" onclick="location.href='{% url 'clientdetail_view' %}'">See Details</button>
+        </li>
+        <li class="client-item">
+            <img src="{% static 'images/profile7.jpeg' %}" alt="Viswa's Picture">
+            <div class="client-details">
+                <h5>Viswa</h5>
+            </div>
+            <button class="client-button" onclick="location.href='{% url 'clientdetail_view' %}'">See Details</button>
+        </li>
+        <li class="client-item">
+            <img src="{% static 'images/profile8.jpg' %}" alt="Kevin's Picture">
+            <div class="client-details">
+                <h5>Kevin</h5>
+            </div>
+            <button class="client-button" onclick="location.href='{% url 'clientdetail_view' %}'">See Details</button>
+        </li>
+        <li class="client-item">
+            <img src="{% static 'images/profile9.jpeg' %}" alt="James's Picture">
+            <div class="client-details">
+                <h5>James</h5>
+            </div>
+            <button class="client-button" onclick="location.href='{% url 'clientdetail_view' %}'">See Details</button>
+        </li>
+    </ul>
 </div>
-<div class="modal fade" id="viewModal" tabindex="-1" role="dialog" aria-labelledby="viewModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content  text-white">
-            <div class="modal-header">
-                <h5 class="modal-title text-dark" id="viewModalLabel">Agent Profile</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body row justify-content-center">
-                <div class="card ">
-                    <div>
-                        
-                        <img src="{% static "images/vishnu.jpg" %}" alt="Profile Picture">
-                        
-                    </div>
-                    <div class="card-details">
-                        <h2 class="">Arun S</h2>
-                        <p class="text-white">Email: Arun@gmail.com</p>
-                        <p class="text-white">Contact:9867453212 </p>
-                        <p class="text-white">Position:xyz</p>
-                        <button class="btn btn-primary mb-2"><a class="  text-white" href="{% url 'client_details' %}">client Details</a></button>
-                       
-                        
-                    </div>
-                    
-                </div>
-                
-            </div>
-            </div>
-        </div>
-    </div>
-</div>
-<div class="modal fade" id="mapModal" tabindex="-1" role="dialog" aria-labelledby="mapModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document" style="max-width: 40%;">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="mapModalLabel">Agent Location</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <iframe 
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3151.8354345093747!2d144.9556515153163!3d-37.81732797975148!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6ad642af0f11fd81%3A0xf0727b1f50197b76!2sFederation%20Square!5e0!3m2!1sen!2sau!4v1620662657236!5m2!1sen!2sau"
-                    width="100%" 
-                    height="300" 
-                    style="border:0;" 
-                    allowfullscreen="" 
-                    loading="lazy">
-                </iframe>
-            </div>
-        </div>
-    </div>
-</div>
-</body>
 {% endblock %}
+

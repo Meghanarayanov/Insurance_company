@@ -1,302 +1,353 @@
 {% extends 'adminbase.html' %}
 {% block content %}
 {% load static %}
-<style>
-    .background-container {
-        background-image: url('{% static "images/admin.jpg" %}');
-        background-repeat: no-repeat;
-        background-size: cover;
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        filter: blur(0.1px);
-        z-index: -1;
-    }
-    .overlay {
-        position: fixed;
-        top: 66px; /* Adjusted for navbar height */
-        left: 200px; /* Adjusted for navbar width */
-        width: calc(100% - 200px); /* Adjusted for navbar width */
-        height: calc(100% - 56px); /* Adjusted for navbar height */
-        display: flex;
-        justify-content: center;
-        align-items: center;
-         /* Allow vertical scrolling */
-        padding: 20px; /* Additional padding for better spacing */
-        background-color: rgba(12, 9, 9, 0.5);
-        
-    }
-    @media (min-width: 992px) {
-        .vertical-nav {
+    <style>
+        .background-container {
+            background-image: url('{% static "images/admin.jpg" %}');
+            background-repeat: no-repeat;
+            background-size: cover;
             position: fixed;
-            top: 56px;
-            left: 0;
-            width: 200px;
-            height: 100%;
-            
-            overflow-y: auto;
-            padding-top: 30px;
-        }
-        .nav-link {
-           
-           
-            border-radius:10px;
-        }
-        .nav-link:hover {
-            background-color: blueviolet;
-        }
-    }
-    .table-container {
-        position: relative;
-        z-index: 1;
-        width: 100%;
-        max-width: 100%; /* Ensure full width on smaller screens */
-        height: calc(100% - 56px); /* Adjusted for navbar height */
-        overflow-y: auto;
-        overflow-x: auto; /* Allow horizontal scrolling */
-        margin: 0 auto; /* Center the table container */
-        
-    }
-    .table-responsive {
-        width: 100%;
-        display: block;
-        overflow-x: auto; /* Enable horizontal scrolling */
-       
-    }
-    table {
-        width: 100%;
-        border-collapse: collapse;
-        
-    }
-    th{
-        background-color: rgb(3, 1, 34);
-    }
-    td{
-        background-color: rgb(6, 4, 48,0.7);
-    }
-    tr:hover{
-        background-color: rgb(6, 4, 48);
-    }
-
-    th, td {
-        padding: 8px;
-        text-align: left;
-        border: 1px solid #ddd;
-    }
-    .profile-image {
-        max-width: 100px; /* Adjust as needed */
-        max-height: 100px; /* Adjust as needed */
-    }
-    .cert-image {
-        max-width: 100px; /* Adjust as needed */
-        max-height: 100px; /* Adjust as needed */
-    }
-    @media (max-width: 991px) {
-        .overlay {
-            top: 56px; /* Adjust for navbar height */
+            top: 0;
             left: 0;
             width: 100%;
-            height: calc(100% - 56px); /* Adjust for navbar height */
-            padding: 10px; /* Reduce padding for smaller screens */
+            height: 100%;
+            filter: blur(0.1px);
+            z-index: -1;
         }
-        .table-container {
-            padding: 10px; /* Reduce padding for smaller screens */
-            max-width: 100%; /* Ensure full width on smaller screens */
-            height: calc(100% - 56px); /* Adjust for navbar height */
+        .overlay {
+            position: fixed;
+            top: 56px; /* Adjusted for navbar height */
+            left: 200px; /* Adjusted for navbar width */
+            width: calc(100% - 200px); /* Adjusted for navbar width */
+            height: calc(100% - 56px); /* Adjusted for navbar height */
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: flex-start;
+            padding: 20px;
+            background-color: rgba(12, 9, 9, 0.5);
+            overflow-y: auto;
         }
-    }
-    .card {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        background: blueviolet;
-        border-radius: 10px;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-        max-width: 300px;
-        width: 100%;
-        padding: 0px;
-        box-sizing: border-box;
-        margin-top: 5px;
-        padding-top:15px;
-        transition: transform 0.3s, box-shadow 0.3s;
-    }
-    .card:hover {
-        transform: translateY(-10px);
-        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
-    }
-    
-    .card img {
-        max-width: 150px;
-        border-radius: 8px;
-        margin-right: 0px;
-        transition: transform 0.3s, box-shadow 0.3s;
-    }
-    .card img:hover {
-        transform: scale(1.1);
-        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
-    }
-    .card-details {
-        display: flex;
-        flex-direction: column;
-       
-        justify-content: center;
-        align-items: center;
-    }
-    .card-content h2 {
-        margin-bottom: 10px;
-        font-size: 24px;
-        color: #333;
-    }
-    .card-content p {
-        margin-bottom: 10px;
-        font-weight: bold;
-        color: #666;
-    }
-    .card-content p a {
-        color: #007BFF;
-        text-decoration: none;
-        transition: color 0.3s;
-    }
-    .card-content p a:hover {
-        color: #0056b3;
-    }
-    .card-content p:last-child {
-        margin-bottom: 0;
-    }
-    
-    @media (max-width: 575px) {
-        .profile-image {
-            max-width: 40px; /* Adjust as needed for smaller screens */
-            max-height: 40px; /* Adjust as needed for smaller screens */
+        @media (min-width: 992px) {
+            .vertical-nav {
+                position: fixed;
+                top: 56px;
+                left: 0;
+                width: 200px;
+                height: 100%;
+             
+                overflow-y: auto;
+                padding-top: 30px;
+            }
+            .nav-link {
+               
+               
+                border-radius:10px;
+            }
+            .nav-link:hover {
+                background-color: blueviolet;
+            }
+        }
+        .card {
+            background: blueviolet;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            width: 150px;
+            margin: 15px;
+            transition: transform 0.3s, box-shadow 0.3s;
+            overflow: hidden;
+            text-align: center;
+            color: white;
+            cursor: pointer;
+        }
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+        }
+        .card img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+        }
+        .card-details {
+            padding: 15px;
+        }
+        .card-details h2 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+        .card-details p {
+            font-size: 1rem;
+            margin-bottom: 10px;
+        }
+        .card-details a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .card-details a:hover {
+            text-decoration: underline;
+        }
+        .modal .modal-dialog {
+            max-width: 40%;
+        }
+        @media (max-width: 768px) {
+            .modal .modal-dialog {
+                max-width: 80%;
+            }
+            .overlay {
+                left: 0;
+                width: 100%;
+            }
+        }
+        .details-container {
+            position: fixed;
+            top: 56px; /* Adjusted for navbar height */
+            left: 200px; /* Adjusted for navbar width */
+            width: calc(100% - 200px); /* Adjusted for navbar width */
+            height: calc(100% - 56px); /* Adjusted for navbar height */
+            display: none;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: flex-start;
+            padding: 20px;
+            background-color: rgba(12, 9, 9, 0.5);
+            overflow-y: auto;
+            z-index: 1;
+        }
+        @media (max-width: 992px) {
+            .details-container {
+                left: 0;
+                width: 100%;
+            }
+            .overlay {
+                left: 0;
+                width: 100%;
+            }
+        }
+        @media (max-width: 576px) {
+            .overlay {
+                left: 0;
+                width: 100%;
+            }
+        }
+        .details-card {
+            background: blueviolet;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            width: 450px;
+            margin: 15px;
+            transition: transform 0.3s, box-shadow 0.3s;
+            overflow: hidden;
+            text-align: center;
+            color: white;
+        }
+        .details-card img {
+            width: 150px;
+            height:200px;
+            border-radius: 8px;
+            margin-right: 0px;
+            margin-top: 25px;
+            transition: transform 0.3s, box-shadow 0.3s;
         }
         
-       
-        h2{
-            font-size:1.3rem;
+        .details-card-details {
+            padding: 15px;
         }
-        td{
-            font-size:0.8rem;
+        .details-card-details h2 {
+            font-size: 2rem;
+            margin-bottom: 10px;
         }
-        th{
-            font-size:0.9rem;
+        .details-card-details p {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
         }
-        .btn{
-            
-            font-size: 0.6rem;
-            padding: 2px 2px;
-            margin-bottom:3px;
-             }
-             .card{
-                max-width:250px;
-                justify-content: center;
-                align-items: center;
-            }
-            .card-details {
-                display: flex;
-                flex-direction: column;
-               
-                justify-content: center;
-                align-items: center;
-            }     
-    }
-</style>
+    </style>
+</head>
 <body>
 <div class="background-container"></div>
 <div class="overlay">
-    <div class="container table-container">
-        <h2 class="text-center text-white">Agent Details</h2>
-        <br>
-        <div class="table-responsive">
-            <table class="table table-bordered text-white text-center">
-                <thead >
-                    <tr class="">
-                        <th>Name</th>
-                        <th>Email</th>
-                        <th>Contact</th>
-                        <th>Position</th>
-                        <th>Image</th>
-                        <th>Track</th>
-                        <th>Action</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    
-                    <tr>
-                        <td>Arun S</td>
-                        <td>Arun@gmail.com</td>
-                        <td>9867453212</td>
-                        <td>Insurance Specialist</td>
-                        <td><img src="{% static "images/vishnu.jpg" %}" alt="" class="profile-image"><br>
-                            <a class=" view text-white" href="" data-toggle="modal" data-target="#viewModal">See More</a>
-                        </td>
-                        <td><a class=" track text-white" href=""  data-toggle="modal" data-target="#mapModal">Click Here</a></td>
-                        <td><button class="btn btn-primary mr-3"><a class=" edit text-white" href="{% url 'update_agent' %}">Update</a></button>
-                            <button class="btn btn-danger"><a class=" delete text-white" href="">Delete</a></button>
-                            </td>
-                    </tr>
+    <h2 class="text-center text-white w-100 mt-2">Agents</h2>
+    <div class="card" >
+        <img src="{% static "images/vishnu.jpg" %}" alt="Profile Picture">
+        <div class="card-details">
+            <h5>Arun S</h5>
+            <a href="#" onclick="showAgentDetails('agent3'); return false;">show more</a>
+        </div>
+    </div>
 
-                </tbody>
-            </table>
+    <!-- Sample agent card for listing -->
+    <div class="card">
+        <img src="{% static "images/profile2.jpeg" %}" alt="Profile Picture">
+        <div class="card-details">
+            <h5>John Doe</h5>
+            <a href="#" onclick="showAgentDetails('agent1'); return false;">show more</a>
+        </div>
+    </div>
 
+    <div class="card">
+        <img src="{% static "images/nibi.jpeg" %}" alt="Profile Picture">
+        <div class="card-details">
+            <h5>Akil</h5>
+            <a href="#" onclick="showAgentDetails('agent2'); return false;">show more</a>
+        </div>
+    </div>
+    <div class="card">
+        <img src="{% static "images/profile7.jpeg" %}" alt="Profile Picture">
+        <div class="card-details">
+            <h5>Alex</h5>
+            <a href="#" onclick="showAgentDetails('agent2'); return false;">show more</a>
+        </div>
+    </div>
+    <div class="card">
+        <img src="{% static "images/profile3.jpg" %}" alt="Profile Picture">
+        <div class="card-details">
+            <h5>David</h5>
+            <a href="#" onclick="showAgentDetails('agent2'); return false;">show more</a>
+        </div>
+    </div>
+    <div class="card">
+        <img src="{% static "images/profile4.jpg" %}" alt="Profile Picture">
+        <div class="card-details">
+            <h5>Jane Smith</h5>
+            <a href="#" onclick="showAgentDetails('agent2'); return false;">show more</a>
+        </div>
+    </div>
+    <div class="card">
+        <img src="{% static "images/profile6.jpeg" %}" alt="Profile Picture">
+        <div class="card-details">
+            <h5>Harry</h5>
+            <a href="#" onclick="showAgentDetails('agent2'); return false;">show more</a>
+        </div>
+    </div>
+    <div class="card">
+        <img src="{% static "images/profile8.jpg" %}" alt="Profile Picture">
+        <div class="card-details">
+            <h5>Vinay</h5>
+            <a href="#" onclick="showAgentDetails('agent2'); return false;">show more</a>
+        </div>
+    </div>
+    <div class="card">
+        <img src="{% static "images/profile9.jpeg" %}" alt="Profile Picture">
+        <div class="card-details">
+            <h5>James</h5>
+            <a href="#" onclick="showAgentDetails('agent2'); return false;">show more</a>
+        </div>
+    </div>
+    <div class="card">
+        <img src="{% static "images/profile10.jpeg" %}" alt="Profile Picture">
+        <div class="card-details">
+            <h5>Jinson</h5>
+            <a href="#" onclick="showAgentDetails('agent2'); return false;">show more</a>
         </div>
     </div>
 </div>
-<div class="modal fade" id="viewModal" tabindex="-1" role="dialog" aria-labelledby="viewModalLabel" aria-hidden="true">
+
+<!-- Agent details container -->
+<div class="details-container" id="details-container">
+    <h2 class="text-center text-white w-100 mt-5">Agent Details</h2>
+    <div class="details-card" id="agent3-details">
+        <img src="{% static "images/vishnu.jpg" %}" alt="Profile Picture">
+        <div class="details-card-details">
+            <h2>Arun S</h2>
+            <p>Position: Insurance Specialist</p>
+            <p>Email: arun.s@example.com</p>
+            <p>Phone Number: +1234567890</p>
+            <div>
+                <a href="{% url 'update_agent' %}" class="btn btn-primary mb-2">Edit</a>
+                <a href="#" class="btn btn-danger mb-2">Delete</a>
+                <a href="#" data-toggle="modal" data-target="#mapModal1" class="btn btn-secondary mb-2">Track</a>
+                <a href="{% url 'client_details' %}" class="btn btn-info mb-2">Client Details</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Sample agent detail 1 -->
+    <div class="details-card" id="agent1-details">
+        <img src="{% static "images/profile2.jpeg" %}" alt="Profile Picture">
+        <div class="details-card-details">
+            <h2>John Doe</h2>
+            <p>Position: Sales Manager</p>
+            <p>Email: john.doe@example.com</p>
+            <p>Phone Number: +1234567890</p>
+            <div>
+                <a href="{% url 'update_agent' %}" class="btn btn-primary mb-2">Edit</a>
+                <a href="#" class="btn btn-danger mb-2">Delete</a>
+                <a href="#" data-toggle="modal" data-target="#mapModal1" class="btn btn-secondary mb-2">Track</a>
+                <a href="{% url 'client_details' %}" class="btn btn-info mb-2">Client Details</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Sample agent detail 2 -->
+    <div class="details-card" id="agent2-details">
+        <img src="{% static "images/nibi.jpeg" %}" alt="Profile Picture">
+        <div class="details-card-details">
+            <h2>Akil</h2>
+            <p>Position: Marketing Executive</p>
+            <p>Email: akil@example.com</p>
+            <p>Phone Number: +0987654321</p>
+            <div>
+                <a href="{% url 'update_agent' %}" class="btn btn-primary mb-2">Edit</a>
+                <a href="#" class="btn btn-danger mb-2">Delete</a>
+                <a href="#" data-toggle="modal" data-target="#mapModal2" class="btn btn-secondary mb-2">Track</a>
+                <a href="{% url 'client_details' %}" class="btn btn-info mb-2">Client Details</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Map Modal 1 -->
+<div class="modal fade" id="mapModal1" tabindex="-1" role="dialog" aria-labelledby="mapModalLabel1" aria-hidden="true">
     <div class="modal-dialog" role="document">
-        <div class="modal-content  text-white">
-            <div class="modal-header">
-                <h5 class="modal-title text-dark" id="viewModalLabel">Agent Profile</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body row justify-content-center">
-                <div class="card ">
-                    <div>
-                        
-                        <img src="{% static "images/vishnu.jpg" %}" alt="Profile Picture">
-                        
-                    </div>
-                    <div class="card-details">
-                        <h2 class="">Arun S</h2>
-                        <p class="text-white">Email: Arun@gmail.com</p>
-                        <p class="text-white">Contact:9867453212 </p>
-                        <p class="text-white">Position:Insurance Specialist</p>
-                        <button class="btn btn-primary mb-2"><a class="  text-white" href="{% url 'client_details' %}">Client Details</a></button>
-                       
-                        
-                    </div>
-                    
-                </div>
-                
-            </div>
-            </div>
-        </div>
-    </div>
-</div>
-<div class="modal fade" id="mapModal" tabindex="-1" role="dialog" aria-labelledby="mapModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document" style="max-width: 40%;">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="mapModalLabel">Agent Location</h5>
+                <h5 class="modal-title" id="mapModalLabel1">Agent Location</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body">
-                <iframe 
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3151.8354345093747!2d144.9556515153163!3d-37.81732797975148!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6ad642af0f11fd81%3A0xf0727b1f50197b76!2sFederation%20Square!5e0!3m2!1sen!2sau!4v1620662657236!5m2!1sen!2sau"
-                    width="100%" 
-                    height="300" 
-                    style="border:0;" 
-                    allowfullscreen="" 
-                    loading="lazy">
-                </iframe>
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3151.8354345093747!2d144.9556515153163!3d-37.81732797975148!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6ad642af0f11fd81%3A0xf5770411f09b7b7b!2sFlinders%20Street%20Railway%20Station!5e0!3m2!1sen!2sau!4v1575244568582!5m2!1sen!2sau" width="100%" height="400" frameborder="0" style="border:0;" allowfullscreen=""></iframe>
             </div>
         </div>
     </div>
 </div>
+
+<!-- Map Modal 2 -->
+<div class="modal fade" id="mapModal2" tabindex="-1" role="dialog" aria-labelledby="mapModalLabel2" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="mapModalLabel2">Agent Location</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3151.8354345093747!2d144.9556515153163!3d-37.81732797975148!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6ad642af0f11fd81%3A0xf5770411f09b7b7b!2sFlinders%20Street%20Railway%20Station!5e0!3m2!1sen!2sau!4v1575244568582!5m2!1sen!2sau" width="100%" height="400" frameborder="0" style="border:0;" allowfullscreen=""></iframe>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    function showAgentDetails(agentId) {
+        // Hide the overlay containing the grid of agents
+        document.querySelector('.overlay').style.display = 'none';
+        // Show the details container
+        document.getElementById('details-container').style.display = 'flex';
+        // Hide all agent details
+        document.querySelectorAll('.details-container .details-card').forEach(card => {
+            card.style.display = 'none';
+        });
+        // Show the selected agent details
+        document.getElementById(agentId + '-details').style.display = 'block';
+    }
+</script>
 </body>
+</html>
 {% endblock %}
+
+
+

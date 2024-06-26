@@ -1,0 +1,188 @@
+{% extends 'agentbase.html' %}
+{% block content %}
+{% load static %}
+<style>
+    body, html {
+        margin: 0;
+        padding: 0;
+        font-family: 'Roboto', sans-serif;
+        background-color: #f0f2f5;
+    }
+    .background-container {
+        background-image: url('{% static "images/admin.jpg" %}');
+        background-repeat: no-repeat;
+        background-size: cover;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        filter: blur(5px);
+        z-index: -1;
+    }
+    .overlay {
+        position: fixed;
+        top: 56px;
+        left: 200px;
+        width: calc(100% - 200px);
+        height: calc(100% - 56px);
+        padding: 20px;
+        background-color: rgba(12, 9, 9, 0.5);
+        overflow-y: auto;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 20px;
+    }
+    @media (max-width: 992px) {
+        .overlay {
+            left: 0;
+            width: 100%;
+        }
+    }
+    .client-item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        background: linear-gradient(145deg, #6a11cb, #2575fc);
+        border-radius: 15px;
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        padding: 20px;
+        transition: transform 0.3s, box-shadow 0.3s;
+        color: #fff;
+        position: relative;
+        overflow: hidden;
+    }
+    .client-item:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+    }
+    .client-item img {
+        border-radius: 50%;
+        width: 120px;
+        height: 120px;
+        object-fit: cover;
+        margin-bottom: 20px;
+        transition: transform 0.3s;
+    }
+    .client-item:hover img {
+        transform: scale(1.1);
+    }
+    .client-details {
+        text-align: center;
+        z-index: 1;
+    }
+    .client-details h5 {
+        font-size: 1.5rem;
+        margin: 0;
+    }
+    .client-details p {
+        margin: 10px 0;
+        color: rgba(255, 255, 255, 0.8);
+    }
+    .client-button {
+        background-color: #ff4081;
+        color: #fff;
+        border: none;
+        border-radius: 25px;
+        padding: 10px 20px;
+        cursor: pointer;
+        transition: background-color 0.3s, transform 0.3s;
+        margin-top: 15px;
+        z-index: 1;
+        outline: none;
+    }
+    .client-button:hover {
+        background-color: #e91e63;
+        transform: translateY(-2px);
+    }
+    .client-item::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.2);
+        border-radius: 15px;
+        transition: opacity 0.3s;
+        z-index: 0;
+    }
+    .client-item:hover::before {
+        opacity: 0.5;
+    }
+    .client-button:focus {
+        background-color: #e91e63;
+        transform: translateY(-2px);
+        box-shadow: 0 0 5px rgba(255, 64, 129, 0.5);
+    }
+</style>
+<div class="background-container"></div>
+<div class="overlay">
+    <h2 class="text-center w-100 mt-5 text-white">Clients</h2>
+    <div class="client-item">
+        <img src="{% static 'images/nibi.jpeg' %}" alt="John's Picture">
+        <div class="client-details">
+            <h5>John</h5>
+        </div>
+        <button class="client-button" onclick="location.href='{% url 'clientdetail_view' %}'">Show More</button>
+    </div>
+    <div class="client-item">
+        <img src="{% static 'images/kavya.jpg' %}" alt="Rose's Picture">
+        <div class="client-details">
+            <h5>Rose</h5>
+        </div>
+        <button class="client-button" onclick="location.href='{% url 'clientdetail_view' %}'">Show More</button>
+    </div>
+    <div class="client-item">
+        <img src="{% static 'images/client.jpeg' %}" alt="Dona's Picture">
+        <div class="client-details">
+            <h5>Dona</h5>
+        </div>
+        <button class="client-button" onclick="location.href='{% url 'clientdetail_view' %}'">Show More</button>
+    </div>
+    <div class="client-item">
+        <img src="{% static 'images/client2.jpeg' %}" alt="Daniel's Picture">
+        <div class="client-details">
+            <h5>Daniel</h5>
+        </div>
+        <button class="client-button" onclick="location.href='{% url 'clientdetail_view' %}'">Show More</button>
+    </div>
+    <div class="client-item">
+        <img src="{% static 'images/profile2.jpeg' %}" alt="Daniel's Picture">
+        <div class="client-details">
+            <h5>Daniel</h5>
+        </div>
+        <button class="client-button" onclick="location.href='{% url 'clientdetail_view' %}'">Show More</button>
+    </div>
+    <div class="client-item">
+        <img src="{% static 'images/profile6.jpeg' %}" alt="Akash's Picture">
+        <div class="client-details">
+            <h5>Akash</h5>
+        </div>
+        <button class="client-button" onclick="location.href='{% url 'clientdetail_view' %}'">Show More</button>
+    </div>
+    <div class="client-item">
+        <img src="{% static 'images/profile7.jpeg' %}" alt="Viswa's Picture">
+        <div class="client-details">
+            <h5>Viswa</h5>
+        </div>
+        <button class="client-button" onclick="location.href='{% url 'clientdetail_view' %}'">Show More</button>
+    </div>
+    <div class="client-item">
+        <img src="{% static 'images/profile8.jpg' %}" alt="Kevin's Picture">
+        <div class="client-details">
+            <h5>Kevin</h5>
+        </div>
+        <button class="client-button" onclick="location.href='{% url 'clientdetail_view' %}'">Show More</button>
+    </div>
+    <div class="client-item">
+        <img src="{% static 'images/profile9.jpeg' %}" alt="James's Picture">
+        <div class="client-details">
+            <h5>James</h5>
+        </div>
+        <button class="client-button" onclick="location.href='{% url 'clientdetail_view' %}'">Show More</button>
+    </div>
+</div>
+{% endblock %}
+
+

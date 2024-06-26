@@ -35,6 +35,8 @@ def client_details(request):
     return render(request,'clientdetails.html')
 def clientdetail_view(request):
     return render(request,'clientdetails_view.html')
+def back(request):
+    return render(request,'clientdetails.html')
 def createcampaign(request):
     return render(request,'createcampaign.html')
 def assignagentcampaign(request):
@@ -48,8 +50,10 @@ def edit_agent(request):
     return render(request,'edit_agent.html')
 def change_password(request):
     return render(request,'change_password.html')
-def cutomer_informations(request):
+def customer_informations(request):
     return render(request,'customerinformation.html')
+def customer_detail(request):
+    return render(request,'customerdetails.html')
 def logout(request):
     return render(request,'index.html')
 
