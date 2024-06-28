@@ -3,7 +3,7 @@
 {% load static %}
 <style>
     .background-container {
-        background-color: rgb(209, 194, 248);
+        background-color:#657680;
         position: fixed;
         top: 0;
         left: 0;
@@ -37,7 +37,7 @@
         max-width: 700px;
         margin-bottom: 20px;
         margin-top: 50px;
-        background-color: rgb(168, 254, 225);
+        background: linear-gradient(145deg,#E0F7FA,#434E98);
         border-radius: 15px;
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
         padding: 5px;
@@ -141,7 +141,7 @@
         height: auto;
         margin-bottom: 20px;
         margin-top: 20px;
-        background-color: rgb(226, 148, 248);
+        background-color: #CFE1E2;
         border-radius: 15px;
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
         padding: 5px;
@@ -163,7 +163,9 @@
         justify-content: center;
         align-items: center;
         width: 100%;
+
     }
+
     .table {
         margin: 20px 30px;
         width: auto;
@@ -193,6 +195,13 @@
             width: 100%;
             margin-bottom: 20px;
         }
+        .recent-visits-table th,
+.recent-visits-table td {
+    padding: 8px 10px; /* Adjust padding for smaller screens */
+    box-sizing: border-box; /* Ensures padding is included in the width */
+    width: auto; /* Set the width to auto */
+    min-width: 200px; /* Set a minimum width to prevent shrinking too much */
+}
     }
     @media (max-width: 576px) {
         .weather-card,
@@ -227,6 +236,14 @@
         h2{
             font-size:1.5rem;
         }
+        .recent-visits-table th,
+.recent-visits-table td {
+    padding: 8px 10px; /* Adjust padding for smaller screens */
+    box-sizing: border-box; /* Ensures padding is included in the width */
+    width: auto; /* Set the width to auto */
+    min-width: 200px; /* Set a minimum width to prevent shrinking too much */
+}
+        
     }
     /* Additional styling for weather card */
     .weather-card .card-title {
@@ -239,7 +256,7 @@
     }
     .weather-card .weather-details i {
         font-size: 1.2rem;
-        color: #f39c12;
+        color: #E0F7FA;
     }
     .weather-card .inspiration {
         color: indigo;
@@ -252,7 +269,7 @@
         font-size: 3rem;
     }
     .weather-card .card-text span {
-        color: #28a745;
+        color: #E0F7FA;
         font-weight: bold;
     }
     .card-title {

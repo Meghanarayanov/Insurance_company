@@ -1,9 +1,9 @@
-{% extends 'adminbase.html' %}
+{% extends 'agentbase.html' %}
 {% block content %}
 {% load static %}
 <style>
     .background-container {
-        background-image: url('{% static "images/admin.jpg" %}');
+        background-image: url('{% static "images/card22.png" %}');
         background-repeat: no-repeat;
         background-size: cover;
         position: fixed;
@@ -50,9 +50,8 @@
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        background:  linear-gradient(145deg,#202447,#434E98);
+        background:linear-gradient(145deg,  #8AB8BD,#676E71) ;
         border-radius: 10px;
-        color:white;
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
         max-width: 600px;
         width: 100%;
@@ -155,7 +154,7 @@
             <p class="card-content">Willingness to Purchase Insurance: High</p>
             <p class="card-content">Referral Source: Friend</p>
             <p class="card-content">Previous Claims: None</p>
-            <button type="button" class="btn btn-primary"><a href="{% url 'back' %}" class="text-white">Back</a></button>
+            <button type="button" class="btn btn-primary"><a href="{% url 'backagent' %}" class="text-white">Back</a></button>
         </div>
     </div>
    
@@ -165,4 +164,3 @@
 </div>
 
 {% endblock %}
-

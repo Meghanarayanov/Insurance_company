@@ -17,7 +17,6 @@
         left: 0;
         width: 100%;
         height: 100%;
-       
         z-index: -1;
     }
     .overlay {
@@ -30,6 +29,13 @@
         background-color: rgba(12, 9, 9, 0.5);
         overflow-y: auto;
     }
+    .nav-link {
+           
+           
+        border-radius:10px;
+    }
+    .nav-link:hover {
+        background-color: blueviolet;}
     @media (max-width: 992px) {
         .overlay {
             left: 0;
@@ -48,7 +54,7 @@
     .client-item {
         display: flex;
         align-items: center;
-        background: #fff;
+        background: linear-gradient(145deg, #202447, #434E98);
         border-radius: 10px;
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         margin-bottom: 20px;
@@ -70,11 +76,15 @@
     }
     .client-details {
         flex-grow: 1;
+        overflow: hidden; /* Ensure content doesn't overflow */
     }
     .client-details h5 {
         font-size: 1.25rem;
         margin: 0;
-        color: #333;
+        color: white;
+        white-space: nowrap; /* Prevent line breaks */
+        overflow: hidden; /* Hide overflowing text */
+        text-overflow: ellipsis; /* Display ellipsis for overflowing text */
     }
     .client-details p {
         margin: 5px 0;
@@ -88,6 +98,7 @@
         padding: 10px 20px;
         cursor: pointer;
         transition: background-color 0.3s;
+        white-space: nowrap; /* Prevent line breaks */
     }
     .client-button:hover {
         background-color: #0056b3;
@@ -95,6 +106,33 @@
     @media (max-width: 768px) {
         .client-item {
             width: 100%;
+        }
+        .client-item img {
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            margin-right: 10px;
+        }
+        .client-details h5 {
+            font-size: 1rem;
+        }
+        .client-button {
+            font-size: 0.8rem;
+            padding: 5px 10px;
+        }
+    }
+    @media (max-width: 576px) {
+        .client-item img {
+            width: 50px;
+            height: 50px;
+            margin-right: 10px;
+        }
+        .client-details h5 {
+            font-size: 1rem;
+        }
+        .client-button {
+            font-size: 0.8rem;
+            padding: 5px 10px;
         }
     }
 </style>
@@ -119,24 +157,18 @@
         <li class="client-item">
             <img src="{% static 'images/client.jpeg' %}" alt="Dona's Picture">
             <div class="client-details">
-                <h5>Dona</h5>
+                <h5>Daniel</h5>
             </div>
             <button class="client-button" onclick="location.href='{% url 'clientdetail_view' %}'">See Details</button>
         </li>
         <li class="client-item">
             <img src="{% static 'images/client2.jpeg' %}" alt="Daniel's Picture">
             <div class="client-details">
-                <h5>Daniel</h5>
+                <h5>Dona</h5>
             </div>
             <button class="client-button" onclick="location.href='{% url 'clientdetail_view' %}'">See Details</button>
         </li>
-        <li class="client-item">
-            <img src="{% static 'images/profile2.jpeg' %}" alt="Daniel's Picture">
-            <div class="client-details">
-                <h5>Daniel</h5>
-            </div>
-            <button class="client-button" onclick="location.href='{% url 'clientdetail_view' %}'">See Details</button>
-        </li>
+        
         <li class="client-item">
             <img src="{% static 'images/profile6.jpeg' %}" alt="Akash's Picture">
             <div class="client-details">
@@ -168,4 +200,5 @@
     </ul>
 </div>
 {% endblock %}
+
 

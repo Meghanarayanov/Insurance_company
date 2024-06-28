@@ -10,7 +10,7 @@
     }
 
     .background-container {
-        background-color: var(--primary-color);
+        background-color: #C4DFF7;
         position: fixed;
         top: 0;
         left: 0;
@@ -49,16 +49,25 @@
         max-width: 500px;
         height: 200px;
         margin: 20px 10px;
-        background-color:var(--primary-color); ;
+        background-color:#C4DFF7 ;
         border-radius: 15px;
         padding: 20px;
         text-align: center;
     }
+    .card-title1{
+        color:indigo;
+    }
+    .card-text1{
+        color:indigo;
+    }
+    
+
 
     .time-content {
         display: flex;
         flex-direction: column;
         align-items: center;
+       
     }
 
     .weather-icon {
@@ -135,7 +144,7 @@
         
     }
     .dashboard-section5 {
-        background-color:rgb(226, 234, 244);
+        background-color:#ADCBE9;
         border-radius: 15px;
         padding: 20px;
         margin: 20px 10px;
@@ -265,6 +274,14 @@
             width: 100%;
             margin-bottom: 20px;
         }
+        .table th,
+        .table td {
+            padding: 8px 10px; /* Adjust padding for smaller screens */
+          box-sizing: border-box; /* Ensures padding is included in the width */
+            width: auto; /* Set the width to auto */
+           min-width: 150px; /* Set a minimum width to prevent shrinking too much */
+
+        }
     }
 
     @media (max-width: 768px) {
@@ -313,6 +330,14 @@
 
         .dashboard-section4 {
             margin-top: 20px;
+        }
+        .table th,
+        .table td {
+            padding: 8px 10px; /* Adjust padding for smaller screens */
+            box-sizing: border-box; /* Ensures padding is included in the width */
+            width: auto; /* Set the width to auto */
+            min-width: 150px; /* Set a minimum width to prevent shrinking too much */
+        
         }
         
     }
@@ -373,6 +398,14 @@
         .dashboard-section4 {
             margin-top: 20px;
         }
+        .table th,
+        .table td {
+            padding: 8px 10px; /* Adjust padding for smaller screens */
+            box-sizing: border-box; /* Ensures padding is included in the width */
+            width: auto; /* Set the width to auto */
+            min-width: 150px; /* Set a minimum width to prevent shrinking too much */
+        
+        }
     }
 </style>
 
@@ -382,8 +415,8 @@
         <div class="time-content">
             <p class="inspiration">Welcome Admin</p>
             <i class="fas fa-sun weather-icon"></i>
-            <p class="card-title">Date & Time</p>
-            <p class="card-text">
+            <p class="card-title1">Date & Time</p>
+            <p class="card-text1">
                 <span id="date"></span> | <span id="time"></span>
             </p>
         </div>

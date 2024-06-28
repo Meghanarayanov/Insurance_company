@@ -25,6 +25,8 @@ urlpatterns = [
     path('change_password',views.change_password,name='change_password'),
     path('customer_informations',views.customer_informations,name='customer_informations'),
     path('customer_detail',views.customer_detail,name='customer_detail'),
+    path('customerdetails_view',views.customerdetails_view,name='customerdetails_view'),
+     path('backagent',views.backagent,name='backagent'),
     path("logout",views.logout,name="logout"),
    
    

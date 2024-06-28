@@ -54,6 +54,10 @@ def customer_informations(request):
     return render(request,'customerinformation.html')
 def customer_detail(request):
     return render(request,'customerdetails.html')
+def customerdetails_view(request):
+    return render(request,'customerdetails_view.html')
+def backagent(request):
+    return render(request,'customerdetails.html')
 def logout(request):
     return render(request,'index.html')
 
